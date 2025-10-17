@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Types", "Types", "{02EA681E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOCC.IBE.Compare.Tests", "TOCC.IBE.Compare.Tests\TOCC.IBE.Compare.Tests.csproj", "{F4FCB8B4-DAF7-1DFB-DDFB-847B8DB16446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOCC.IBE.Compare.Models", "TOCC.IBE.Comare.Models\TOCC.IBE.Compare.Models.csproj", "{0FD4877E-801C-4C72-BA51-51EB5523F568}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOCC.IBE.Compare.Models", "TOCC.IBE.Compare.Models\TOCC.IBE.Compare.Models.csproj", "{0FD4877E-801C-4C72-BA51-51EB5523F568}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

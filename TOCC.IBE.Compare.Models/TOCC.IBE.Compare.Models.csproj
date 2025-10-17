@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="V2\" />
+    <Compile Remove="V2\**" />
+    <EmbeddedResource Remove="V2\**" />
+    <None Remove="V2\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TOCC.IBE.Comare.Models\TOCC.IBE.Compare.Models.csproj" />
+    <ProjectReference Include="..\TOCC.IBE.Compare.Models\TOCC.IBE.Compare.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
