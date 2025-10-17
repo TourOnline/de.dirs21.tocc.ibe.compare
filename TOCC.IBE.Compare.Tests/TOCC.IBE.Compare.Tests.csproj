@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TOCC.IBE.Compare\TOCC.IBE.Compare.csproj" />
+    <Reference Include="TOCC.Contracts.IBE">
+      <HintPath>..\Types\TOCC.Contracts.IBE.dll</HintPath>
+    </Reference>
+    <Reference Include="TOCC.Core.Enums">
+      <HintPath>..\Types\TOCC.Core.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="TOCC.Contracts.Default">
+      <HintPath>..\Types\TOCC.Contracts.Default.dll</HintPath>
+    </Reference>
+    <Reference Include="TOCC.Contracts.Grid">
+      <HintPath>..\Types\TOCC.Contracts.Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="TOCC.Core">
+      <HintPath>..\Types\TOCC.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="TOCC.Models.Default">
+      <HintPath>..\Types\TOCC.Models.Default.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Test\new.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Test\old.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOCC.IBE.Compare", "TOCC.IBE.Compare\TOCC.IBE.Compare.csproj", "{6EE79D39-DF25-42BF-8EAF-5042A191AA44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Types", "Types", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Types\TOCC.Contracts.Default.dll = Types\TOCC.Contracts.Default.dll
+		Types\TOCC.Contracts.Grid.dll = Types\TOCC.Contracts.Grid.dll
+		Types\TOCC.Contracts.IBE.dll = Types\TOCC.Contracts.IBE.dll
+		Types\TOCC.Core.dll = Types\TOCC.Core.dll
+		Types\TOCC.Core.Enums.dll = Types\TOCC.Core.Enums.dll
+		Types\TOCC.Models.Default.dll = Types\TOCC.Models.Default.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOCC.IBE.Compare.Tests", "TOCC.IBE.Compare.Tests\TOCC.IBE.Compare.Tests.csproj", "{F4FCB8B4-DAF7-1DFB-DDFB-847B8DB16446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOCC.IBE.Compare.Models", "TOCC.IBE.Comare.Models\TOCC.IBE.Compare.Models.csproj", "{0FD4877E-801C-4C72-BA51-51EB5523F568}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EE79D39-DF25-42BF-8EAF-5042A191AA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE79D39-DF25-42BF-8EAF-5042A191AA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE79D39-DF25-42BF-8EAF-5042A191AA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE79D39-DF25-42BF-8EAF-5042A191AA44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4FCB8B4-DAF7-1DFB-DDFB-847B8DB16446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4FCB8B4-DAF7-1DFB-DDFB-847B8DB16446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4FCB8B4-DAF7-1DFB-DDFB-847B8DB16446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4FCB8B4-DAF7-1DFB-DDFB-847B8DB16446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FD4877E-801C-4C72-BA51-51EB5523F568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FD4877E-801C-4C72-BA51-51EB5523F568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FD4877E-801C-4C72-BA51-51EB5523F568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FD4877E-801C-4C72-BA51-51EB5523F568}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9541A19E-0345-4011-A332-A94B291586E8}
+	EndGlobalSection
+EndGlobal

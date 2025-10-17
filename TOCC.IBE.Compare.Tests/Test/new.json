@@ -1,0 +1,3954 @@
+{
+    "Meta": {
+      "HttpStatus": "OK",
+      "HttpStatusCode": 200,
+      "Host": "tocc-default-rc-0-6fcf9d69d6-qw8b7",
+      "IsValid": true,
+      "Cultures": null,
+      "Message": null,
+      "Trace": [],
+      "Status": "Success",
+      "Count": null,
+      "Page": null,
+      "PageSize": null,
+      "PageCount": null,
+      "QueryCount": null,
+      "Errors": null,
+      "Warnings": null
+    },
+    "Value": {
+      "_uuid": "13bae7f7-e23d-479c-b331-0f387cca515f",
+      "Info": {
+        "Products": {
+          "042db757-a1a5-38f6-2403-1a5743986c04": {
+            "_id": 1422727,
+            "_oid": 97936,
+            "_uuid": "042db757-a1a5-38f6-2403-1a5743986c04",
+            "_LegacyId": "149874",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Suite Webkunst mit freistehender Badewanne",
+              "Description": "<p>Spacious and bright suite with bathtub in the new Schlössl. With free-standing bed and special design.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/webkunst-4.jpg",
+                    "Original": "/images/97936/webkunst-4.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/webkunst-2.jpg",
+                    "Original": "/images/97936/webkunst-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/webkunst-1.jpg",
+                    "Original": "/images/97936/webkunst-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/webkunst-7.jpg",
+                    "Original": "/images/97936/webkunst-7.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/webkunst-8.jpg",
+                    "Original": "/images/97936/webkunst-8.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/webkunst-5.jpg",
+                    "Original": "/images/97936/webkunst-5.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/webkunst-6.jpg",
+                    "Original": "/images/97936/webkunst-6.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "43"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 194.85,
+              "AvgPrice": 289.0,
+              "MaxPrice": 558.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "bd919dbe-39cb-30e6-a315-544bc6915a26": {
+            "_id": 1421810,
+            "_oid": 97936,
+            "_uuid": "bd919dbe-39cb-30e6-a315-544bc6915a26",
+            "_LegacyId": "149255",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Juniorsuite Pfefferminz",
+              "Description": "<p>Modern wellness junior suite in the Schlössl. A place to feel good and relax.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/1-1.jpg",
+                    "Original": "/images/97936/1-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/2-1.jpg",
+                    "Original": "/images/97936/2-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/3-1.jpg",
+                    "Original": "/images/97936/3-1.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 3,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "35"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 176.85,
+              "AvgPrice": 264.0,
+              "MaxPrice": 518.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "038dd8ea-6d43-fa43-bea8-05004cc192fa": {
+            "_id": 1421805,
+            "_oid": 97936,
+            "_uuid": "038dd8ea-6d43-fa43-bea8-05004cc192fa",
+            "_LegacyId": "149250",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Maisonette",
+              "Description": "<p>Two-storey, romantic suite with balcony & cosy sitting area. In our maisonette you will experience many soothing and relaxing moments.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/maisonette-5.jpg",
+                    "Original": "/images/97936/maisonette-5.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/maisonette-6.jpg",
+                    "Original": "/images/97936/maisonette-6.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/maisonette-7.jpg",
+                    "Original": "/images/97936/maisonette-7.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/maisonette-2.jpg",
+                    "Original": "/images/97936/maisonette-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/maisonette-3.jpg",
+                    "Original": "/images/97936/maisonette-3.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/maisonette-4.jpg",
+                    "Original": "/images/97936/maisonette-4.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "30"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 166.05,
+              "AvgPrice": 251.0,
+              "MaxPrice": 494.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "444ef7bc-162a-e332-4d19-c2f45b200c04": {
+            "_id": 1421815,
+            "_oid": 97936,
+            "_uuid": "444ef7bc-162a-e332-4d19-c2f45b200c04",
+            "_LegacyId": "149261",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Junior suite Wollfilz",
+              "Description": "<p>Modern junior suite in the new Schlössl. A very special design to arrive and feel good.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/wollfilz-1.jpg",
+                    "Original": "/images/97936/wollfilz-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/wollfilz-3.jpg",
+                    "Original": "/images/97936/wollfilz-3.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/wollfilz-4.jpg",
+                    "Original": "/images/97936/wollfilz-4.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/wollfilz-6.jpg",
+                    "Original": "/images/97936/wollfilz-6.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/wollfilz-2.jpg",
+                    "Original": "/images/97936/wollfilz-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/wollfilz-5.jpg",
+                    "Original": "/images/97936/wollfilz-5.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "43"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 176.85,
+              "AvgPrice": 264.0,
+              "MaxPrice": 518.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "b156fa80-3477-2371-2a94-e346bc9f8445": {
+            "_id": 1422503,
+            "_oid": 97936,
+            "_uuid": "b156fa80-3477-2371-2a94-e346bc9f8445",
+            "_LegacyId": "149734",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Hops junior suite",
+              "Description": "<p>Stylish, modern junior suite with country-style design elements that invite you to linger in comfort from the very first second.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/hopfen-totale-2.jpg",
+                    "Original": "/images/97936/hopfen-totale-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/hopfen-2.jpg",
+                    "Original": "/images/97936/hopfen-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/hopfen-4.jpg",
+                    "Original": "/images/97936/hopfen-4.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "40"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 176.85,
+              "AvgPrice": 266.0,
+              "MaxPrice": 578.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "657c6f9a-b942-de0b-b45a-f2a3c166306d": {
+            "_id": 1422506,
+            "_oid": 97936,
+            "_uuid": "657c6f9a-b942-de0b-b45a-f2a3c166306d",
+            "_LegacyId": "149737",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Junior suite bronze.zeit",
+              "Description": "<p>Romantic and friendly junior suite that invites you to linger.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/bronze.zeit-2.jpg",
+                    "Original": "/images/97936/bronze.zeit-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/bronze.zeit-4.jpg",
+                    "Original": "/images/97936/bronze.zeit-4.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/bronze.zeit-3.jpg",
+                    "Original": "/images/97936/bronze.zeit-3.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/bronze.zeit-5.jpg",
+                    "Original": "/images/97936/bronze.zeit-5.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/bronze.zeit-6.jpg",
+                    "Original": "/images/97936/bronze.zeit-6.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/bronze.zeit-1.jpg",
+                    "Original": "/images/97936/bronze.zeit-1.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "35"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 176.85,
+              "AvgPrice": 265.0,
+              "MaxPrice": 518.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "f3e87b14-52cf-727f-1054-6536f482cf15": {
+            "_id": 1421809,
+            "_oid": 97936,
+            "_uuid": "f3e87b14-52cf-727f-1054-6536f482cf15",
+            "_LegacyId": "149254",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Comfort room sage",
+              "Description": "<p>Modern comfort double room. The relaxing effect of sage makes this wellness room a true place to unwind.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/salbei-1.jpg",
+                    "Original": "/images/97936/salbei-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/salbei-2.jpg",
+                    "Original": "/images/97936/salbei-2.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "28"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 168.3,
+              "AvgPrice": 224.0,
+              "MaxPrice": 374.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "5b31f32e-ae82-26e3-3cdd-100c8fe1a004": {
+            "_id": 1421813,
+            "_oid": 97936,
+            "_uuid": "5b31f32e-ae82-26e3-3cdd-100c8fe1a004",
+            "_LegacyId": "149258",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Leiterwagen suite with bathtub and sauna",
+              "Description": "<p>Spacious and cosy suite with sauna andbathtub. The highlight of this rustic suite is the large Leiterwagen bed and the free-standing bathtub on a plateau.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leiterwagen-sauna-8.jpg",
+                    "Original": "/images/97936/leiterwagen-sauna-8.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leiterwagen-sauna-1.jpg",
+                    "Original": "/images/97936/leiterwagen-sauna-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leiterwagen-sauna-4.jpg",
+                    "Original": "/images/97936/leiterwagen-sauna-4.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leiterwagen-sauna-9.jpg",
+                    "Original": "/images/97936/leiterwagen-sauna-9.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leiterwagen-sauna-3.jpg",
+                    "Original": "/images/97936/leiterwagen-sauna-3.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leiterwagen-sauna-7.jpg",
+                    "Original": "/images/97936/leiterwagen-sauna-7.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leiterwagen-sauna-2.jpg",
+                    "Original": "/images/97936/leiterwagen-sauna-2.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "60"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 203.85,
+              "AvgPrice": 304.0,
+              "MaxPrice": 638.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "d6e92bcd-d7b4-e843-e36c-b695a9f15458": {
+            "_id": 1421814,
+            "_oid": 97936,
+            "_uuid": "d6e92bcd-d7b4-e843-e36c-b695a9f15458",
+            "_LegacyId": "149259",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Comfort room Waldluft",
+              "Description": "<p>Modern wellness double room in the new Schlössl. A place where you feel as free as in nature.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/waldluft-komfortzimmer-4.jpg",
+                    "Original": "/images/97936/waldluft-komfortzimmer-4.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/waldluft-komfortzimmer-6.jpg",
+                    "Original": "/images/97936/waldluft-komfortzimmer-6.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/waldluft-komfortzimmer-5.jpg",
+                    "Original": "/images/97936/waldluft-komfortzimmer-5.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/waldluft-komfortzimmer-2.jpg",
+                    "Original": "/images/97936/waldluft-komfortzimmer-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/waldluft-komfortzimmer-1.jpg",
+                    "Original": "/images/97936/waldluft-komfortzimmer-1.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "22"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 166.05,
+              "AvgPrice": 250.0,
+              "MaxPrice": 494.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "c7cd7d3d-ec13-64ad-778e-2f5f19e8e591": {
+            "_id": 1421817,
+            "_oid": 97936,
+            "_uuid": "c7cd7d3d-ec13-64ad-778e-2f5f19e8e591",
+            "_LegacyId": "149265",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Suite Blaudruck with bathtub",
+              "Description": "<p>Spacious and bright suite with bathtub. Blaudruck, a traditional craft from the Mühlviertel region, is perfectly showcased here.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/blaudruck-badewanne-2.jpg",
+                    "Original": "/images/97936/blaudruck-badewanne-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/blaudruck-badewanne-6.jpg",
+                    "Original": "/images/97936/blaudruck-badewanne-6.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/blaudruck-badewanne-7.jpg",
+                    "Original": "/images/97936/blaudruck-badewanne-7.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/blaudruck-badewanne-3.jpg",
+                    "Original": "/images/97936/blaudruck-badewanne-3.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/blaudruck-badewanne-4.jpg",
+                    "Original": "/images/97936/blaudruck-badewanne-4.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/blaudruck-badewanne-5.jpg",
+                    "Original": "/images/97936/blaudruck-badewanne-5.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/blaudruck-badewanne-1.jpg",
+                    "Original": "/images/97936/blaudruck-badewanne-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/blaudruck-badewanne-8.jpg",
+                    "Original": "/images/97936/blaudruck-badewanne-8.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 3,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "49"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 194.85,
+              "AvgPrice": 287.0,
+              "MaxPrice": 558.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "fdf75541-a25a-ce1b-0235-9e3f234a634e": {
+            "_id": 1421819,
+            "_oid": 97936,
+            "_uuid": "fdf75541-a25a-ce1b-0235-9e3f234a634e",
+            "_LegacyId": "149267",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Granite comfort room",
+              "Description": "<p>Beautiful, modern comfort room with design elements in country house style.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/granit-1.jpg",
+                    "Original": "/images/97936/granit-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/granit-3.jpg",
+                    "Original": "/images/97936/granit-3.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/granit-5.jpg",
+                    "Original": "/images/97936/granit-5.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/granit-2.jpg",
+                    "Original": "/images/97936/granit-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/granit-4.jpg",
+                    "Original": "/images/97936/granit-4.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "30"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 166.05,
+              "AvgPrice": 251.0,
+              "MaxPrice": 494.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "48628cac-4729-5e06-9760-2bf6c8d61917": {
+            "_id": 1422505,
+            "_oid": 97936,
+            "_uuid": "48628cac-4729-5e06-9760-2bf6c8d61917",
+            "_LegacyId": "149736",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Linen suite with bathtub",
+              "Description": "<p>Spacious and bright suite with bathtub and beautiful view towards the bathing pond. The warm and friendly atmosphere immediately casts a spell over you.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leinen-suite-1.jpg",
+                    "Original": "/images/97936/leinen-suite-1.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leinen-suite-2.jpg",
+                    "Original": "/images/97936/leinen-suite-2.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leinen-suite-3.jpg",
+                    "Original": "/images/97936/leinen-suite-3.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/leinen-suite-6.jpg",
+                    "Original": "/images/97936/leinen-suite-6.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "50"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 194.85,
+              "AvgPrice": 289.0,
+              "MaxPrice": 558.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          },
+          "57ade613-21f1-2d89-11e5-7bf86d3d680f": {
+            "_id": 1422507,
+            "_oid": 97936,
+            "_uuid": "57ade613-21f1-2d89-11e5-7bf86d3d680f",
+            "_LegacyId": "149738",
+            "_RepositoryName": "Entity.Room",
+            "Address": null,
+            "Category": null,
+            "Content": {
+              "Name": "Spa Suite silber.reich with whirlpool tub",
+              "Description": "<p>Modern design, cosy warmth and comfort at the highest level. Materials typical of the Mühlviertel, such as stone and wood, have been lovingly incorporated here. In our spa suite silber.reich you make no compromises.</p>",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": []
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/guglwald-wintergarten-kgh-silber-0094-web-.jpg",
+                    "Original": "/images/97936/guglwald-wintergarten-kgh-silber-0094-web-.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/guglwald-wintergarten-kgh-silber-0087-web-.jpg",
+                    "Original": "/images/97936/guglwald-wintergarten-kgh-silber-0087-web-.jpg"
+                  }
+                },
+                {
+                  "Category": "2",
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/guglwald-wintergarten-kgh-silber-0086-web-.jpg",
+                    "Original": "/images/97936/guglwald-wintergarten-kgh-silber-0086-web-.jpg"
+                  }
+                }
+              ],
+              "Files": []
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": 2,
+                "Min": 1,
+                "Default": 2
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [
+              {
+                "Icon": null,
+                "IsComparable": true,
+                "Key": "room_size",
+                "Label": null,
+                "Unit": "SquareMeter",
+                "Value": "45"
+              }
+            ],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": "Room",
+            "Units": [],
+            "Settings": {
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "IsHourly": false,
+              "ScheduleType": "PerTick"
+            },
+            "Stats": {
+              "MinPrice": 194.85,
+              "AvgPrice": 283.0,
+              "MaxPrice": 555.0
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          }
+        },
+        "Properties": {
+          "97936": {
+            "_id": 97936,
+            "_oid": 97936,
+            "_uuid": "7c58d528-d36a-41d4-8175-7f3126dabf9d",
+            "_LegacyId": null,
+            "_RepositoryName": "Entity.HostInfo",
+            "Address": {
+              "Street": "Guglwald",
+              "StreetNumber": "8 ",
+              "Building": null,
+              "FloorLevel": null,
+              "City": "Guglwald",
+              "PostalCode": "4191",
+              "StateProvince": "OÖ",
+              "Country": "Österreich",
+              "ISO_3166_1_Alpha2Code": "AT",
+              "FormattedAddress": null,
+              "Coordinate": {
+                "Latitude": -1.0,
+                "Longitude": -1.0
+              }
+            },
+            "Category": null,
+            "Content": {
+              "Name": "Hotel Guglwald",
+              "Description": "",
+              "ShortName": null,
+              "HasShortName": null,
+              "InfoBlocks": null
+            },
+            "Facts": null,
+            "Media": {
+              "Images": [
+                {
+                  "Category": null,
+                  "Content": {
+                    "Description": null
+                  },
+                  "URI": {
+                    "Public": "https://cdn.dirs21.de/v1/cdn/images/97936/guglwald.jpg",
+                    "Original": "/images/97936/guglwald.jpg"
+                  }
+                }
+              ],
+              "Files": null
+            },
+            "Restrictions": {
+              "Occupancy": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              },
+              "Quantity": {
+                "Max": null,
+                "Min": null,
+                "Default": null
+              }
+            },
+            "Tags": [],
+            "Group": null,
+            "SeatingLayouts": null,
+            "Type": null,
+            "Units": null,
+            "Settings": {
+              "Tick": null,
+              "IsHourly": false,
+              "ScheduleType": null
+            },
+            "Stats": {
+              "MinPrice": null,
+              "AvgPrice": null,
+              "MaxPrice": null
+            },
+            "_Selling": {
+              "Derived": {
+                "Reference": null
+              }
+            },
+            "Selling": {
+              "Currency": "EUR",
+              "ExchangeRate": 1.0
+            }
+          }
+        },
+        "Tags": {},
+        "Tariffs": {
+          "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9": {
+            "_id": 550776,
+            "_oid": 97936,
+            "_RepositoryName": "Entity.Rate",
+            "_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+            "_LegacyId": "111860",
+            "Content": {
+              "Name": "Price for 1 night",
+              "Description": "<p>Included services: • Welcome drink at our reception • Rich breakfast from 7.30 AM to 10.30 AM • Wellness buffet from 2.00 PM to 4.00 PM, offering a selection of warm dishes, seasonal salads, comforting soups, and an assortment of delectable cakes and desserts • Tea bar in our wellness area which provides a variety of healthy snacks to keep you energized • Elegant evening gourmet dinner • Wellness and sauna area</p>"
+            },
+            "Media": {
+              "Images": null,
+              "Files": null
+            },
+            "Properties": [
+              {
+                "_id": null,
+                "Key": "Board",
+                "Name": null,
+                "Type": "Board",
+                "Value": "HalfBoard"
+              },
+              {
+                "_id": null,
+                "Key": "IsD21Standard",
+                "Name": null,
+                "Type": "IsD21Standard",
+                "Value": "True"
+              }
+            ],
+            "Selling": {
+              "BoardType": "HalfBoard",
+              "Discount": {
+                "Channels": {
+                  "IsForAll": false,
+                  "Items": []
+                },
+                "IsActive": false,
+                "IsRelative": false
+              },
+              "IncludedServices": null,
+              "OffsetReference": {
+                "_oid": 0,
+                "_id": 0,
+                "_uuid": "559e4e84-d0bb-4eab-afd8-2b37d05291c5",
+                "_RepositoryName": "Entity.Rate",
+                "_LegacyId": "105137"
+              }
+            },
+            "Settings": {
+              "IsCodeProtected": false,
+              "IsExclusive": false,
+              "IsMixable": false,
+              "CloseOtherTariffs": "Always",
+              "VisibilityMode": "Always",
+              "Attributes": null,
+              "IsCrossPeriodBookable": true,
+              "IsCrossTimeFrameBookable": true,
+              "Dependencies": {
+                "Products": []
+              },
+              "Periods": null,
+              "Pricing": null,
+              "Restrictions": null,
+              "ScheduleType": null,
+              "Type": null,
+              "Status": "Published",
+              "Tick": {
+                "Unit": "Days",
+                "Value": 1
+              },
+              "TickLength": "1.00:00:00",
+              "TimeFrames": {}
+            },
+            "Restrictions": null
+          }
+        },
+        "CancellationTerms": {
+          "9012b7b8-41a8-6a98-780d-91b5bca77315": {
+            "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+            "_id": 28617,
+            "Name": "Standard ",
+            "Terms": {
+              "TermsOfService": {
+                "URI": "/docs/97936/agb-guglwald-2024-11.pdf"
+              }
+            }
+          },
+          "3bda0a29-1975-4d34-9d61-283583f13d36": {
+            "_uuid": "3bda0a29-1975-4d34-9d61-283583f13d36",
+            "_id": 30019,
+            "Name": "Stornogebühren für ein Zusatzleistung",
+            "Terms": {
+              "TermsOfService": {
+                "URI": "/docs/97936/agb-guglwald.pdf"
+              }
+            }
+          }
+        },
+        "InfoPoints": null
+      },
+      "Result": {
+        "Properties": [
+          {
+            "_oid": 97936,
+            "Periods": [
+              {
+                "Sets": [
+                  {
+                    "_uuid": "c97fc7ce-f579-4c47-b0b4-e95d0a678b76",
+                    "Assigned": [],
+                    "Key": "0|2:a",
+                    "Products": [
+                      {
+                        "_uuid": "042db757-a1a5-38f6-2403-1a5743986c04",
+                        "Assigned": [],
+                        "Capacity": 1,
+                        "IsDependency": false,
+                        "Name": "Suite Webkunst mit freistehender Badewanne",
+                        "ProductInfo": {
+                          "_uuid": "042db757-a1a5-38f6-2403-1a5743986c04",
+                          "_id": 1422727,
+                          "_LegacyId": "149874"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 1,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9462423+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 445.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 445.0,
+                                    "BeforeTax": 445.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 445.0,
+                                    "BeforeTax": 445.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 445.0,
+                                  "Total": 445.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 1,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "5ec5ec90-86fe-f6d3-194c-da2f3c7d4906",
+                                          "AfterDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 222.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "5ec5ec90-86fe-f6d3-194c-da2f3c7d4906",
+                                          "AfterDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 222.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 445.0,
+                                          "BeforeTax": 445.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 445.0,
+                                          "BeforeTax": 445.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 445.0
+                                      }
+                                    },
+                                    "Product_uuid": "042db757-a1a5-38f6-2403-1a5743986c04",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "bd919dbe-39cb-30e6-a315-544bc6915a26",
+                        "Assigned": [],
+                        "Capacity": 1,
+                        "IsDependency": false,
+                        "Name": "Juniorsuite Pfefferminz",
+                        "ProductInfo": {
+                          "_uuid": "bd919dbe-39cb-30e6-a315-544bc6915a26",
+                          "_id": 1421810,
+                          "_LegacyId": "149255"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 1,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9447497+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 405.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 405.0,
+                                    "BeforeTax": 405.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 405.0,
+                                    "BeforeTax": 405.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 405.0,
+                                  "Total": 405.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 1,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "f7803ff8-047e-8c4b-1cbf-ed074485c271",
+                                          "AfterDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 202.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "f7803ff8-047e-8c4b-1cbf-ed074485c271",
+                                          "AfterDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 202.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 405.0,
+                                          "BeforeTax": 405.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 405.0,
+                                          "BeforeTax": 405.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 405.0
+                                      }
+                                    },
+                                    "Product_uuid": "bd919dbe-39cb-30e6-a315-544bc6915a26",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "038dd8ea-6d43-fa43-bea8-05004cc192fa",
+                        "Assigned": [],
+                        "Capacity": 3,
+                        "IsDependency": false,
+                        "Name": "Maisonette",
+                        "ProductInfo": {
+                          "_uuid": "038dd8ea-6d43-fa43-bea8-05004cc192fa",
+                          "_id": 1421805,
+                          "_LegacyId": "149250"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 3,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9459701+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 381.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 381.0,
+                                    "BeforeTax": 381.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 381.0,
+                                    "BeforeTax": 381.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 381.0,
+                                  "Total": 381.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 3,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "9fd2095b-df06-eba5-cb1c-8d2162f1050b",
+                                          "AfterDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 190.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "9fd2095b-df06-eba5-cb1c-8d2162f1050b",
+                                          "AfterDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 190.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 381.0,
+                                          "BeforeTax": 381.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 381.0,
+                                          "BeforeTax": 381.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 381.0
+                                      }
+                                    },
+                                    "Product_uuid": "038dd8ea-6d43-fa43-bea8-05004cc192fa",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "444ef7bc-162a-e332-4d19-c2f45b200c04",
+                        "Assigned": [],
+                        "Capacity": 1,
+                        "IsDependency": false,
+                        "Name": "Junior suite Wollfilz",
+                        "ProductInfo": {
+                          "_uuid": "444ef7bc-162a-e332-4d19-c2f45b200c04",
+                          "_id": 1421815,
+                          "_LegacyId": "149261"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 1,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9454565+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 405.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 405.0,
+                                    "BeforeTax": 405.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 405.0,
+                                    "BeforeTax": 405.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 405.0,
+                                  "Total": 405.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 1,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "ccf5c7bc-5b1e-2283-487f-ac56ad21f4d6",
+                                          "AfterDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 202.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "ccf5c7bc-5b1e-2283-487f-ac56ad21f4d6",
+                                          "AfterDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 202.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 405.0,
+                                          "BeforeTax": 405.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 405.0,
+                                          "BeforeTax": 405.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 405.0
+                                      }
+                                    },
+                                    "Product_uuid": "444ef7bc-162a-e332-4d19-c2f45b200c04",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "b156fa80-3477-2371-2a94-e346bc9f8445",
+                        "Assigned": [],
+                        "Capacity": 2,
+                        "IsDependency": false,
+                        "Name": "Hops junior suite",
+                        "ProductInfo": {
+                          "_uuid": "b156fa80-3477-2371-2a94-e346bc9f8445",
+                          "_id": 1422503,
+                          "_LegacyId": "149734"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 2,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9503145+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 405.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 405.0,
+                                    "BeforeTax": 405.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 405.0,
+                                    "BeforeTax": 405.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 405.0,
+                                  "Total": 405.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 2,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "8dc537f6-8849-8a42-7e1d-3abfb37609ba",
+                                          "AfterDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 202.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "8dc537f6-8849-8a42-7e1d-3abfb37609ba",
+                                          "AfterDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 202.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 405.0,
+                                          "BeforeTax": 405.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 405.0,
+                                          "BeforeTax": 405.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 405.0
+                                      }
+                                    },
+                                    "Product_uuid": "b156fa80-3477-2371-2a94-e346bc9f8445",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "657c6f9a-b942-de0b-b45a-f2a3c166306d",
+                        "Assigned": [],
+                        "Capacity": 2,
+                        "IsDependency": false,
+                        "Name": "Junior suite bronze.zeit",
+                        "ProductInfo": {
+                          "_uuid": "657c6f9a-b942-de0b-b45a-f2a3c166306d",
+                          "_id": 1422506,
+                          "_LegacyId": "149737"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 2,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9516959+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 405.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 405.0,
+                                    "BeforeTax": 405.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 405.0,
+                                    "BeforeTax": 405.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 405.0,
+                                  "Total": 405.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 2,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "00913d92-2bb1-7ae2-e382-ac18a89a91f7",
+                                          "AfterDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 202.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "00913d92-2bb1-7ae2-e382-ac18a89a91f7",
+                                          "AfterDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 202.5,
+                                            "BeforeTax": 202.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 202.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 405.0,
+                                          "BeforeTax": 405.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 405.0,
+                                          "BeforeTax": 405.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 405.0
+                                      }
+                                    },
+                                    "Product_uuid": "657c6f9a-b942-de0b-b45a-f2a3c166306d",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "f3e87b14-52cf-727f-1054-6536f482cf15",
+                        "Assigned": [],
+                        "Capacity": 2,
+                        "IsDependency": false,
+                        "Name": "Comfort room sage",
+                        "ProductInfo": {
+                          "_uuid": "f3e87b14-52cf-727f-1054-6536f482cf15",
+                          "_id": 1421809,
+                          "_LegacyId": "149254"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 2,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9488326+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 381.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 381.0,
+                                    "BeforeTax": 381.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 381.0,
+                                    "BeforeTax": 381.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 381.0,
+                                  "Total": 381.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 2,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "4090d3e1-b86c-59b0-04b7-53b6fcac3389",
+                                          "AfterDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 190.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "4090d3e1-b86c-59b0-04b7-53b6fcac3389",
+                                          "AfterDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 190.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 381.0,
+                                          "BeforeTax": 381.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 381.0,
+                                          "BeforeTax": 381.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 381.0
+                                      }
+                                    },
+                                    "Product_uuid": "f3e87b14-52cf-727f-1054-6536f482cf15",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "5b31f32e-ae82-26e3-3cdd-100c8fe1a004",
+                        "Assigned": [],
+                        "Capacity": 1,
+                        "IsDependency": false,
+                        "Name": "Leiterwagen suite with bathtub and sauna",
+                        "ProductInfo": {
+                          "_uuid": "5b31f32e-ae82-26e3-3cdd-100c8fe1a004",
+                          "_id": 1421813,
+                          "_LegacyId": "149258"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 1,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9494506+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 465.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 465.0,
+                                    "BeforeTax": 465.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 465.0,
+                                    "BeforeTax": 465.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 465.0,
+                                  "Total": 465.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 1,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "afc5becd-5d50-222c-fb89-e5cce16afb33",
+                                          "AfterDiscount": {
+                                            "AfterTax": 232.5,
+                                            "BeforeTax": 232.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 232.5,
+                                            "BeforeTax": 232.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 232.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "afc5becd-5d50-222c-fb89-e5cce16afb33",
+                                          "AfterDiscount": {
+                                            "AfterTax": 232.5,
+                                            "BeforeTax": 232.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 232.5,
+                                            "BeforeTax": 232.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 232.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 465.0,
+                                          "BeforeTax": 465.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 465.0,
+                                          "BeforeTax": 465.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 465.0
+                                      }
+                                    },
+                                    "Product_uuid": "5b31f32e-ae82-26e3-3cdd-100c8fe1a004",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "d6e92bcd-d7b4-e843-e36c-b695a9f15458",
+                        "Assigned": [],
+                        "Capacity": 3,
+                        "IsDependency": false,
+                        "Name": "Comfort room Waldluft",
+                        "ProductInfo": {
+                          "_uuid": "d6e92bcd-d7b4-e843-e36c-b695a9f15458",
+                          "_id": 1421814,
+                          "_LegacyId": "149259"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 3,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9514512+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 381.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 381.0,
+                                    "BeforeTax": 381.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 381.0,
+                                    "BeforeTax": 381.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 381.0,
+                                  "Total": 381.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 3,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "2b734f3a-85e2-6adb-2297-7c1b919460b2",
+                                          "AfterDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 190.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "2b734f3a-85e2-6adb-2297-7c1b919460b2",
+                                          "AfterDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 190.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 381.0,
+                                          "BeforeTax": 381.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 381.0,
+                                          "BeforeTax": 381.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 381.0
+                                      }
+                                    },
+                                    "Product_uuid": "d6e92bcd-d7b4-e843-e36c-b695a9f15458",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "c7cd7d3d-ec13-64ad-778e-2f5f19e8e591",
+                        "Assigned": [],
+                        "Capacity": 1,
+                        "IsDependency": false,
+                        "Name": "Suite Blaudruck with bathtub",
+                        "ProductInfo": {
+                          "_uuid": "c7cd7d3d-ec13-64ad-778e-2f5f19e8e591",
+                          "_id": 1421817,
+                          "_LegacyId": "149265"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 1,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9440672+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 445.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 445.0,
+                                    "BeforeTax": 445.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 445.0,
+                                    "BeforeTax": 445.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 445.0,
+                                  "Total": 445.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 1,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "2465fa37-f163-93ad-514f-36810f3e748a",
+                                          "AfterDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 222.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "2465fa37-f163-93ad-514f-36810f3e748a",
+                                          "AfterDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 222.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 445.0,
+                                          "BeforeTax": 445.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 445.0,
+                                          "BeforeTax": 445.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 445.0
+                                      }
+                                    },
+                                    "Product_uuid": "c7cd7d3d-ec13-64ad-778e-2f5f19e8e591",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "fdf75541-a25a-ce1b-0235-9e3f234a634e",
+                        "Assigned": [],
+                        "Capacity": 2,
+                        "IsDependency": false,
+                        "Name": "Granite comfort room",
+                        "ProductInfo": {
+                          "_uuid": "fdf75541-a25a-ce1b-0235-9e3f234a634e",
+                          "_id": 1421819,
+                          "_LegacyId": "149267"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 2,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9509488+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 381.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 381.0,
+                                    "BeforeTax": 381.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 381.0,
+                                    "BeforeTax": 381.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 381.0,
+                                  "Total": 381.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 2,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "a8687af6-8a19-8c89-a104-2ae79c9342e3",
+                                          "AfterDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 190.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "a8687af6-8a19-8c89-a104-2ae79c9342e3",
+                                          "AfterDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 190.5,
+                                            "BeforeTax": 190.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 190.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 381.0,
+                                          "BeforeTax": 381.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 381.0,
+                                          "BeforeTax": 381.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 381.0
+                                      }
+                                    },
+                                    "Product_uuid": "fdf75541-a25a-ce1b-0235-9e3f234a634e",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "48628cac-4729-5e06-9760-2bf6c8d61917",
+                        "Assigned": [],
+                        "Capacity": 1,
+                        "IsDependency": false,
+                        "Name": "Linen suite with bathtub",
+                        "ProductInfo": {
+                          "_uuid": "48628cac-4729-5e06-9760-2bf6c8d61917",
+                          "_id": 1422505,
+                          "_LegacyId": "149736"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 1,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9496857+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 445.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 445.0,
+                                    "BeforeTax": 445.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 445.0,
+                                    "BeforeTax": 445.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 445.0,
+                                  "Total": 445.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 1,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "5777f844-5236-ee11-4fd2-15ede5b30832",
+                                          "AfterDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 222.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "5777f844-5236-ee11-4fd2-15ede5b30832",
+                                          "AfterDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 222.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 445.0,
+                                          "BeforeTax": 445.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 445.0,
+                                          "BeforeTax": 445.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 445.0
+                                      }
+                                    },
+                                    "Product_uuid": "48628cac-4729-5e06-9760-2bf6c8d61917",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      },
+                      {
+                        "_uuid": "57ade613-21f1-2d89-11e5-7bf86d3d680f",
+                        "Assigned": [],
+                        "Capacity": 1,
+                        "IsDependency": false,
+                        "Name": "Spa Suite silber.reich with whirlpool tub",
+                        "ProductInfo": {
+                          "_uuid": "57ade613-21f1-2d89-11e5-7bf86d3d680f",
+                          "_id": 1422507,
+                          "_LegacyId": "149738"
+                        },
+                        "Ticks": [
+                          {
+                            "Offers": [
+                              {
+                                "$type": "TOCC.Contracts.IBE.Models.Availability.Offers.Cheapest, TOCC.Contracts.IBE",
+                                "Type": "Cheapest",
+                                "Capacity": 1,
+                                "Facts": {
+                                  "BoardType": "HalfBoard",
+                                  "Cancellation": {
+                                    "_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Fees": [
+                                      {
+                                        "DueDate": "2025-10-15T13:26:52.9511889+02:00",
+                                        "ReferenceTime": 18,
+                                        "RelatedTo": "WholeStay",
+                                        "TotalDays": 0,
+                                        "Value": 445.0,
+                                        "ValueRelative": 100.0
+                                      }
+                                    ]
+                                  },
+                                  "GuaranteePayment": {
+                                    "_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCreditCardNeeded": false,
+                                    "IsWholeAmountRequired": false,
+                                    "PaymentMethods": [
+                                      "Invoice"
+                                    ],
+                                    "Splits": null
+                                  },
+                                  "Visibility": "Always"
+                                },
+                                "HasConstraints": false,
+                                "IsAvailable": true,
+                                "IsValid": true,
+                                "Los": 1,
+                                "MainTariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                "MainTariff": null,
+                                "Price": {
+                                  "AfterDiscount": {
+                                    "AfterTax": 445.0,
+                                    "BeforeTax": 445.0
+                                  },
+                                  "BeforeDiscount": {
+                                    "AfterTax": 445.0,
+                                    "BeforeTax": 445.0
+                                  },
+                                  "HasDiscount": false,
+                                  "PerTick": 445.0,
+                                  "Total": 445.0
+                                },
+                                "Tags": [
+                                  {
+                                    "Key": "cheapest_rate",
+                                    "Type": "Highlighting",
+                                    "Value": null,
+                                    "Icon": "star"
+                                  }
+                                ],
+                                "Tariff_uuid": null,
+                                "Taxes": [],
+                                "Ticks": [
+                                  {
+                                    "BoardType": "HalfBoard",
+                                    "Cancellation_uuid": "9012b7b8-41a8-6a98-780d-91b5bca77315",
+                                    "Capacity": 1,
+                                    "Guarantee_uuid": "07988a40-21e2-c99a-5c46-2959d375b430",
+                                    "IsCta": false,
+                                    "IsCtd": false,
+                                    "IsMixable": true,
+                                    "IsRateMixBoardTypesMixable": true,
+                                    "IsValid": true,
+                                    "MinLos": 1,
+                                    "MinStayThrough": 1,
+                                    "PersonPrices": {
+                                      "IsGroup": false,
+                                      "Items": [
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "cbef196d-9fe9-db0d-b6e8-9518f96fda77",
+                                          "AfterDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 222.5
+                                        },
+                                        {
+                                          "AgeRange_uuid": "6d3de348-5ae9-a1ba-8877-cb53770288cd",
+                                          "Count": 1,
+                                          "OccupancySlot_uuid": "cbef196d-9fe9-db0d-b6e8-9518f96fda77",
+                                          "AfterDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "BeforeDiscount": {
+                                            "AfterTax": 222.5,
+                                            "BeforeTax": 222.5
+                                          },
+                                          "HasDiscount": false,
+                                          "Total": 222.5
+                                        }
+                                      ],
+                                      "Total": {
+                                        "AfterDiscount": {
+                                          "AfterTax": 445.0,
+                                          "BeforeTax": 445.0
+                                        },
+                                        "BeforeDiscount": {
+                                          "AfterTax": 445.0,
+                                          "BeforeTax": 445.0
+                                        },
+                                        "HasDiscount": false,
+                                        "Total": 445.0
+                                      }
+                                    },
+                                    "Product_uuid": "57ade613-21f1-2d89-11e5-7bf86d3d680f",
+                                    "Tariff_uuid": "f37e4fd3-91ba-05dc-ff7d-9fef1e5d9fb9",
+                                    "From": "2025-10-15T00:00:00",
+                                    "Index": 0,
+                                    "Los": 1,
+                                    "Type": "Flex",
+                                    "Until": "2025-10-16T00:00:00"
+                                  }
+                                ]
+                              }
+                            ],
+                            "From": "2025-10-15T00:00:00",
+                            "InnerTicks": [
+                              {
+                                "From": "2025-10-15T00:00:00",
+                                "Los": 1,
+                                "Until": "2025-10-16T00:00:00"
+                              }
+                            ],
+                            "Los": 1,
+                            "Until": "2025-10-16T00:00:00",
+                            "HasConstraints": false,
+                            "IsAvailable": true,
+                            "IsValid": true
+                          }
+                        ],
+                        "Type": "SingleProduct",
+                        "HasConstraints": false,
+                        "IsAvailable": true,
+                        "IsValid": true
+                      }
+                    ],
+                    "HasConstraints": false,
+                    "IsAvailable": true,
+                    "IsValid": true
+                  }
+                ],
+                "From": "2025-10-15T00:00:00",
+                "Los": 0,
+                "Until": "2025-10-16T00:00:00",
+                "HasConstraints": false,
+                "IsAvailable": true,
+                "IsValid": true
+              }
+            ],
+            "HasConstraints": false,
+            "IsAvailable": true,
+            "IsValid": true,
+            "Price": {
+              "Max": null,
+              "Min": {
+                "AfterDiscount": {
+                  "AfterTax": 381.0,
+                  "BeforeTax": 381.0
+                },
+                "BeforeDiscount": {
+                  "AfterTax": 381.0,
+                  "BeforeTax": 381.0
+                },
+                "HasDiscount": false,
+                "PerTick": 381.0,
+                "Total": 381.0
+              }
+            }
+          }
+        ]
+      },
+      "Type": "Default"
+    }
+  }
