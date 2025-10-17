@@ -330,18 +330,12 @@ namespace TOCC.IBE.Compare.Models.Common
 
         public bool Compare(object? valueV1, object? valueV2, string path, List<Difference> differences)
         {
-            System.Diagnostics.Debug.WriteLine($"📝 ObjectToStringComparer.Compare called for path: {path}");
-            
             // Handle null cases
             if (valueV1 == null && valueV2 == null)
-            {
-                System.Diagnostics.Debug.WriteLine($"   Both values are null - Equal");
                 return true;
-            }
 
             if (valueV1 == null || valueV2 == null)
             {
-                System.Diagnostics.Debug.WriteLine($"   One value is null - Not Equal");
                 differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
                 return false;
             }
@@ -349,19 +343,14 @@ namespace TOCC.IBE.Compare.Models.Common
             // Serialize to JSON strings for accurate comparison
             string json1 = SerializeToJson(valueV1);
             string json2 = SerializeToJson(valueV2);
-            
-            System.Diagnostics.Debug.WriteLine($"   V1 Type: {valueV1.GetType().Name}, JSON: {json1.Substring(0, Math.Min(100, json1.Length))}...");
-            System.Diagnostics.Debug.WriteLine($"   V2 Type: {valueV2.GetType().Name}, JSON: {json2.Substring(0, Math.Min(100, json2.Length))}...");
 
             // Compare JSON strings (ordinal comparison)
             if (json1 != json2)
             {
-                System.Diagnostics.Debug.WriteLine($"   JSON strings do NOT match - Not Equal");
                 differences.Add(new Difference(path, json1, json2, DifferenceType.ValueMismatch));
                 return false;
             }
 
-            System.Diagnostics.Debug.WriteLine($"   JSON strings match - Equal");
             return true;
         }
 
@@ -381,10 +370,9 @@ namespace TOCC.IBE.Compare.Models.Common
                 });
                 return json;
             }
-            catch (Exception ex)
+            catch
             {
                 // If serialization fails, fall back to ToString()
-                System.Diagnostics.Debug.WriteLine($"   ⚠️ JSON serialization failed: {ex.Message}, falling back to ToString()");
                 return value.ToString() ?? string.Empty;
             }
         }

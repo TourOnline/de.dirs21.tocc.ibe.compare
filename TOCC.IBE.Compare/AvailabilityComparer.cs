@@ -93,9 +93,6 @@ namespace TOCC.IBE.Compare
                 return false;
             }
 
-            // Note: Cycle detection removed - JSON deserialization creates tree structures
-            // without shared object references, making cycle detection unnecessary overhead
-
             var propsV1 = typeV1.GetProperties(BindingFlags.Public | BindingFlags.Instance);
             var propsV2 = typeV2.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
@@ -126,17 +123,11 @@ namespace TOCC.IBE.Compare
                 var customCompareAttr = propV1.GetCustomAttribute<CustomCompareAttribute>(true);
                 if (customCompareAttr != null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"🔍 Found CustomCompareAttribute on property: {currentPath}");
                     var customComparer = CreateCustomComparer(customCompareAttr);
                     if (customComparer != null)
                     {
-                        System.Diagnostics.Debug.WriteLine($"🎯 Using custom comparer for: {currentPath}");
                         customComparer.Compare(valueV1, valueV2, currentPath, Differences);
                         continue;
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine($"⚠️ Custom comparer creation failed for: {currentPath}, falling back to default comparison");
                     }
                 }
 
@@ -451,22 +442,15 @@ namespace TOCC.IBE.Compare
             {
                 if (attribute.Parameters != null && attribute.Parameters.Length > 0)
                 {
-                    var comparer = (ICustomComparer)Activator.CreateInstance(attribute.ComparerType, attribute.Parameters);
-                    System.Diagnostics.Debug.WriteLine($"✅ Created custom comparer: {attribute.ComparerType.Name} with {attribute.Parameters.Length} parameters");
-                    return comparer;
+                    return (ICustomComparer)Activator.CreateInstance(attribute.ComparerType, attribute.Parameters);
                 }
                 else
                 {
-                    var comparer = (ICustomComparer)Activator.CreateInstance(attribute.ComparerType);
-                    System.Diagnostics.Debug.WriteLine($"✅ Created custom comparer: {attribute.ComparerType.Name} (parameterless)");
-                    return comparer;
+                    return (ICustomComparer)Activator.CreateInstance(attribute.ComparerType);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                System.Diagnostics.Debug.WriteLine($"❌ Failed to create custom comparer {attribute.ComparerType.Name}: {ex.Message}");
-                System.Diagnostics.Debug.WriteLine($"   Inner Exception: {ex.InnerException?.Message}");
-                System.Diagnostics.Debug.WriteLine($"   Stack Trace: {ex.StackTrace}");
                 return null;
             }
         }
