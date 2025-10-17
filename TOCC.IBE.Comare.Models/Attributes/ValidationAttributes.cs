@@ -1,6 +1,6 @@
 using System;
 
-namespace TOCC.IBE.Compare.Models.Common
+namespace TOCC.IBE.Compare.Models.Attributes
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
     public class ValidationAttribute : Attribute

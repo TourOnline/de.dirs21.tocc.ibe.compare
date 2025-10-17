@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TOCC.IBE.Compare.Models.Attributes;
 
 namespace TOCC.IBE.Compare.Models.V1
 {
     public class Result
     {
+        [UniqueIdentifier("_oid")]
         public List<Property> Properties { set; get; }
     }
 
     public class Property : BaseResultItem
     {
         public long? _oid { set; get; }
+
+        [UniqueIdentifier("From")]
         public List<Period> Periods { set; get; }
         public string Directory { set; get; }
     }
@@ -22,6 +26,8 @@ namespace TOCC.IBE.Compare.Models.V1
     {
         public List<Discount> Discounts { set; get; }
         public DateTime From { set; get; }
+
+        [UniqueIdentifier("Key")]
         public List<Set> Sets { set; get; }
         public DateTime Until { set; get; }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -6,6 +6,8 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using TOCC.IBE.Compare.Models.Common;
+using TOCC.IBE.Compare.Models.Attributes;
+using TOCC.IBE.Compare.Models.Core;
 
 namespace TOCC.IBE.Compare.Models.V1
 {
@@ -16,6 +18,15 @@ namespace TOCC.IBE.Compare.Models.V1
         public Info Info { set; get; }
         public Result Result { set; get; }
         public QueryParametersTypes Type { set; get; }
+        
+        [SkipValidation]
+        public object Data { set; get; }
+        
+        [SkipValidation]
+        public bool Explain { set; get; }
+        
+        [SkipValidation]
+        public object IgnoreSteps { set; get; }
     }
 
     public class MainTariffInfo
@@ -38,11 +49,14 @@ namespace TOCC.IBE.Compare.Models.V1
         public bool IsAvailable { set; get; }
         public bool IsValid { set; get; }
 
+        [SkipValidation]
         public int Los { set; get; }
 
         public MainTariffInfo MainTariff { set; get; }
         public Guid MainTariff_uuid { set; get; }
         public string Name { get; set; }
+        
+        [CustomCompare(typeof(PriceComparer))]
         public PriceInfoType Price { set; get; }
         public PriceInfoType PriceNet { set; get; }
         public ValidatedSetTypes? SubType { set; get; }
@@ -88,6 +102,7 @@ namespace TOCC.IBE.Compare.Models.V1
 
                 public class BaseOfferFactsCancellationFees
                 {
+                    [CustomCompare(typeof(DateTimePrecisionComparer), 60.0)]
                     public DateTime DueDate { set; get; }
                     public int ReferenceTime { set; get; }
                     public CancellationFeeRelationTypes? RelatedTo { set; get; }
@@ -108,6 +123,7 @@ namespace TOCC.IBE.Compare.Models.V1
                 public class BaseOfferFactsGuaranteePaymentSplits
                 {
                     public decimal? AbsoluteValue { set; get; }
+                    
                     public DateTime DueDate { set; get; }
                     public int? RelativeValue { set; get; }
                 }
@@ -170,6 +186,8 @@ namespace TOCC.IBE.Compare.Models.V1
             public bool? IsDependency { set; get; }
             public string Name { set; get; }
             public int NumberOfTicks { set; get; }
+            
+            [CustomCompare(typeof(PersonPricesComparer))]
             public List<PersonPrice> PersonPrices { set; get; }
             public PriceObsolet Price { set; get; }
             public string Product_Name { set; get; }
@@ -221,7 +239,26 @@ namespace TOCC.IBE.Compare.Models.V1
         public Guid _uuid { get; set; }
         public long _id { get; set; }
         public string Name { get; set; } = string.Empty;
+        
+        [CustomCompare(typeof(ObjectToStringComparer))]
         public object Terms { get; set; }
+    }
+
+    public class IBEProductAddress
+    {
+        public string Street { get; set; }
+        public string StreetNumber { get; set; }
+        public string Building { get; set; }
+        public string FloorLevel { get; set; }
+        public string City { get; set; }
+        public string PostalCode { get; set; }
+        public string StateProvince { get; set; }
+        public string Country { get; set; }
+        public string ISO_3166_1_Alpha2Code { get; set; }
+        public string FormattedAddress { get; set; }
+
+        [SkipValidation]
+        public object Coordinate { get; set; }
     }
 
     public class IBEProductViewModel
@@ -231,12 +268,15 @@ namespace TOCC.IBE.Compare.Models.V1
         public Guid? _uuid { get; set; }
         public string _LegacyId { get; set; }
         public string _RepositoryName { get; set; }
-        public object Address { get; set; }
+        public IBEProductAddress Address { get; set; }
         public string Category { get; set; }
         public ProductViewModelContent Content { get; set; }
         public ProductViewModelFacts Facts { get; set; }
         public IBEViewModelMedia Media { get; set; }
         public ProductViewModelRestrictions Restrictions { get; set; }
+
+        // TO DO:  change it later 
+        [SkipValidation]
         public IList<object> Tags { get; set; }
         public object Group { get; set; }
         public object SeatingLayouts { get; set; }
@@ -340,6 +380,15 @@ namespace TOCC.IBE.Compare.Models.V1
     }
 
 
+    public partial class TariffProperties
+    {
+        public virtual System.Int64? _id { set; get; }
+        public virtual System.String Key { set; get; }
+        public virtual System.String Name { set; get; }
+        public TariffPropertyTypes? Type { set; get; }
+        public virtual System.String Value { set; get; }
+
+    }
 
     public class IBETariffViewModel
     {
@@ -350,9 +399,9 @@ namespace TOCC.IBE.Compare.Models.V1
         public string _LegacyId { get; set; }
         public TariffViewModelContent Content { get; set; }
         public IBEViewModelMedia Media { get; set; }
-        public IList<object> Properties { get; set; }
-        public object Selling { get; set; }
-        public object Settings { get; set; }
+        public IList<TariffProperties> Properties { get; set; }
+        public TariffSelling Selling { get; set; }
+        public TariffSettings Settings { get; set; }
         public object Restrictions { get; set; }
 
         public class TariffViewModelContent
@@ -362,18 +411,94 @@ namespace TOCC.IBE.Compare.Models.V1
         }
     }
 
-    public partial class TariffProperties
+    public class TariffSettings : TenantSettings
     {
-        // Properties
-
-        public virtual System.Int64? _id { set; get; }
-        public virtual System.String Key { set; get; }
-        public virtual System.String Name { set; get; }
-        public virtual TariffPropertyTypes? Type { set; get; }
-        public virtual System.String Value { set; get; }
-
-        // end Methods
+        public bool? IsCodeProtected { get; set; }
+        public bool IsExclusive { get; set; }
+        public bool? IsMixable { get; set; }
+        public CloseOtherTariffsTypes? CloseOtherTariffs { get; set; }
+        public TariffVisibilityModes? VisibilityMode { get; set; }
     }
+
+    public abstract class TenantSettings
+    {
+        [SkipValidation]
+        public object TimeFrames { set; get; }
+        public BetterCollection<string> Attributes { get; set; }
+        public bool IsCrossPeriodBookable { get; set; } = true;
+        public bool IsCrossTimeFrameBookable { get; set; } = true;
+        public TenantSettingsDependencies Dependencies { get; set; }
+
+        [SkipValidation]
+        public IList<object> Periods { set; get; }
+        public TenantSettingsPricing Pricing { set; get; }
+        public TenantSettingsRestrictions Restrictions { set; get; }
+        public ScheduleTypes? ScheduleType { get; set; }
+        public string Type { get; set; }
+        public PublishStates? Status { get; set; }
+        public Duration Tick { set; get; }
+        public TimeSpan TickLength => (Tick?.AsTickLength()).GetValueOrDefault(TimeSpan.FromDays(1));
+
+        public class TenantSettingsAttributes
+        {
+            public int? MinLos { get; set; }
+        }
+
+        public class TenantSettingsDependencies
+        {
+            public IList<Guid> Products { get; set; }
+        }
+
+        public class TenantSettingsPricing
+        {
+            public bool HasAgeRanges { get; set; } = false;
+            public bool HasPersonRanges { get; set; } = false;
+            public bool HasTickRanges { get; set; } = false;
+        }
+
+        public class TenantSettingsRestrictions
+        {
+            public bool IsBookableAccrossMultiplePeriods { get; set; }
+            public bool IsBookableAccrossMultipleTimeFrames { get; set; }
+        }
+
+        public class TenantSettingsTimeFrame
+        {
+            public Guid? _uuid { get; set; }
+            public int End { get; set; }
+            public int? EveryXthOfMonth { set; get; }
+            public DateTime? From { get; set; }
+            public int Start { get; set; }
+            public DateTime? Until { get; set; }
+
+        }
+    }
+
+    public partial class TariffSelling
+    {
+        public virtual BoardTypes? BoardType { set; get; }
+        public virtual TariffSellingDiscount Discount { set; get; }
+        public virtual IList<TariffSellingIncludedServices> IncludedServices { set; get; }
+        public virtual Ident OffsetReference { set; get; }
+
+
+        public partial class TariffSellingDiscount
+        {
+            public virtual BetterCollection<System.Guid> Channels { set; get; }
+            public virtual System.Boolean IsActive { set; get; }
+            public virtual System.Boolean IsRelative { set; get; }
+
+        }
+
+        public partial class TariffSellingIncludedServices
+        {
+            public virtual System.String _RepositoryName { set; get; }
+            public virtual System.Guid? _uuid { set; get; }
+            public virtual System.Double? Quantity { set; get; }
+            public virtual System.String Value { set; get; }
+        }
+    }
+
 
     public class DataAlternativePropertyData
     {

@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TOCC.IBE.Compare.Models.Common;
+using TOCC.IBE.Compare.Models.Attributes;
 
 namespace TOCC.IBE.Compare.Models.V1
 {

@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TOCC.IBE.Compare.Models.Common;
+using TOCC.IBE.Compare.Models.Attributes;
 
 namespace TOCC.IBE.Compare.Models.V1
 {
@@ -11,6 +12,8 @@ namespace TOCC.IBE.Compare.Models.V1
     {
         public IList<object> Assigned { get; set; }
         public string Key { set; get; }
+
+        [UniqueIdentifier("_uuid")]
         public List<ProductResult> Products { set; get; }
         public int? AssignedPersons { get; set; }
     }
@@ -25,6 +28,8 @@ namespace TOCC.IBE.Compare.Models.V1
         public bool IsDependency { set; get; }
         public string Name { get; set; }
         public ProductResultProductInfo ProductInfo { set; get; }
+
+        [UniqueIdentifier("From")]
         public List<Tick> Ticks { set; get; }
         public virtual AvailabilityProductTypes Type => AvailabilityProductTypes.SingleProduct;
 

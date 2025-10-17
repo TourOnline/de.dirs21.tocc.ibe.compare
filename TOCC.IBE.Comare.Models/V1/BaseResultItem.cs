@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TOCC.IBE.Compare.Models.Common;
+using TOCC.IBE.Compare.Models.Attributes;
 
 namespace TOCC.IBE.Compare.Models.V1
 {
@@ -36,7 +37,11 @@ namespace TOCC.IBE.Compare.Models.V1
 
     public class PriceInfoType
     {
+        // Result.Properties[0].Periods[0].Sets[0].Products[0].Ticks[0].Offers[0].Price.Product_uuid
+        [SkipValidation]
         public Guid Product_uuid { set; get; }
+
+        [SkipValidation]
         public ProductPriceCalculationModes? CalculationMode { set; get; }
         public PriceInfoTypeOffer Offer { get; set; }
         public decimal? PerPerson { set; get; }

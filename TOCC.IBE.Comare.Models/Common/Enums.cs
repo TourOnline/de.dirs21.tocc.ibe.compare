@@ -400,4 +400,19 @@ namespace TOCC.IBE.Compare.Models.Common
         BreakfastBuffet = 7,
         Board75 = 8
     }
+
+    public enum PublishStates
+    {
+        Published,
+        Draft,
+        Inactive,
+        Deleted
+    }
+
+    public enum CloseOtherTariffsTypes
+    {
+        Always = 0,
+        OnlyIfAvailable = 1,
+        Never = 2
+    }
 }

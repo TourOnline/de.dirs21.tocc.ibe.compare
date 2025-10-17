@@ -11,5 +11,6 @@ namespace TOCC.IBE.Compare.Models.Common
         public TimeUnits? Unit { get; set; }
         public int? Value { get; set; }
 
+        public TimeSpan? AsTickLength() => TimeUtils.ToTimeSpan(Value, Unit);
     }
 }
