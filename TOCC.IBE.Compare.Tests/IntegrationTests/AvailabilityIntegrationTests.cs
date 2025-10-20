@@ -105,12 +105,13 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                 }
             }
 
-            // Generate artifact
-            var artifactPath = GenerateArtifact(results);
-            Console.WriteLine($"\n📦 Artifact generated: {artifactPath}");
+            // Generate artifacts
+            var summaryPath = GenerateArtifact(results);
+            Console.WriteLine($"\n📦 Generated {results.Count} individual artifact files");
+            Console.WriteLine($"📦 Summary artifact: {summaryPath}");
 
             // Publish TeamCity artifact
-            PublishTeamCityArtifact(artifactPath);
+            PublishTeamCityArtifact(summaryPath);
 
             // Summary
             var successCount = results.Count(r => r.Success);
@@ -122,6 +123,13 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             Console.WriteLine($"✅ Identical: {successCount}");
             Console.WriteLine($"⚠️ With differences: {diffCount}");
             Console.WriteLine($"❌ Errors: {errorCount}");
+
+            // Assert: Test passes only if all responses are identical (no differences, no errors)
+            Assert.True(errorCount == 0, $"Test failed: {errorCount} test case(s) had errors. Check artifacts folder for details: {Path.GetDirectoryName(summaryPath)}");
+            Assert.True(diffCount == 0, $"Test failed: {diffCount} test case(s) have differences between V1 and V2. Check artifacts folder for details: {Path.GetDirectoryName(summaryPath)}");
+            Assert.True(successCount == results.Count, $"Test failed: Not all test cases passed. Only {successCount}/{results.Count} were identical.");
+            
+            Console.WriteLine($"\n✅ All {results.Count} test cases passed - V1 and V2 responses are identical!");
         }
 
         private List<TestCase> LoadTestCases()
@@ -217,6 +225,10 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                 Uuid = testCase.Uuid,
                 PropertyDescription = testCase.PropertyDescription,
                 QueryConfigName = testCase.QueryConfigName,
+                From = testCase.QueryParameters?.From,
+                Until = testCase.QueryParameters?.Until,
+                Los = testCase.QueryParameters?.Los ?? 0,
+                ChannelUuid = testCase.Uuid,
                 Differences = new List<Compare.Models.Core.Difference>()
             };
 
@@ -227,10 +239,12 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
 
                 // Call V1 API
                 var v1Response = await CallApi(_v1BaseUrl, envelope);
+                result.V1ResponseJson = v1Response;
                 var v1Data = JsonConvert.DeserializeObject<ApiResult<V1Response>>(v1Response);
 
                 // Call V2 API
                 var v2Response = await CallApi(_v2BaseUrl, envelope);
+                result.V2ResponseJson = v2Response;
                 var v2Data = JsonConvert.DeserializeObject<ApiResult<TOCC.Contracts.IBE.Models.Availability.Response>>(v2Response);
 
                 // Compare responses
@@ -348,6 +362,16 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             };
         }
 
+        private string SanitizeFileName(string fileName)
+        {
+            if (string.IsNullOrEmpty(fileName))
+                return "unnamed";
+
+            var invalidChars = Path.GetInvalidFileNameChars();
+            var sanitized = string.Join("_", fileName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries));
+            return sanitized.Replace(" ", "_").Replace(":", "").Replace("+", "plus");
+        }
+
         private string GenerateArtifact(List<TestCaseResult> results)
         {
             var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
@@ -355,7 +379,49 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             var artifactsDir = Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", _artifactsFolder));
             Directory.CreateDirectory(artifactsDir);
 
-            var artifactPath = Path.Combine(artifactsDir, $"integration-test-results_{timestamp}.json");
+            // Generate individual artifact files for each test case
+            foreach (var result in results)
+            {
+                var sanitizedTestName = SanitizeFileName(result.QueryConfigName);
+                var individualFileName = $"{timestamp}_oid{result.Oid}_uuid{result.Uuid.Substring(0, 8)}_{sanitizedTestName}.json";
+                var individualFilePath = Path.Combine(artifactsDir, individualFileName);
+
+                var individualArtifact = new
+                {
+                    Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    Oid = result.Oid,
+                    Uuid = result.Uuid,
+                    Property = result.PropertyDescription,
+                    QueryConfiguration = result.QueryConfigName,
+                    QueryParameters = new
+                    {
+                        result.From,
+                        result.Until,
+                        result.Los,
+                        ChannelUuid = result.ChannelUuid
+                    },
+                    V1BaseUrl = _v1BaseUrl,
+                    V2BaseUrl = _v2BaseUrl,
+                    result.Success,
+                    result.ErrorMessage,
+                    DifferenceCount = result.Differences?.Count ?? 0,
+                    Differences = result.Differences?.Select(d => new
+                    {
+                        Type = d.Type.ToString(),
+                        d.Path,
+                        Expected = d.Expected?.ToString(),
+                        Actual = d.Actual?.ToString()
+                    }).ToList(),
+                    V1Response = result.V1ResponseJson != null ? JsonConvert.DeserializeObject(result.V1ResponseJson) : null,
+                    V2Response = result.V2ResponseJson != null ? JsonConvert.DeserializeObject(result.V2ResponseJson) : null
+                };
+
+                var individualJson = JsonConvert.SerializeObject(individualArtifact, Formatting.Indented);
+                File.WriteAllText(individualFilePath, individualJson);
+            }
+
+            // Generate summary artifact
+            var artifactPath = Path.Combine(artifactsDir, $"integration-test-summary_{timestamp}.json");
 
             // Create detailed artifact
             var artifact = new
@@ -377,6 +443,13 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                     r.Uuid,
                     Property = r.PropertyDescription,
                     QueryConfiguration = r.QueryConfigName,
+                    QueryParameters = new
+                    {
+                        r.From,
+                        r.Until,
+                        r.Los,
+                        ChannelUuid = r.ChannelUuid
+                    },
                     r.Success,
                     r.ErrorMessage,
                     DifferenceCount = r.Differences?.Count ?? 0,

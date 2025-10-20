@@ -15,6 +15,12 @@
       "Uuid": "9e0e8dc3-2357-4db1-a283-40d5bc4ffd6b",
       "Property": "Property 97936",
       "QueryConfiguration": "1 Night - 2 Adults",
+      "QueryParameters": {
+        "From": "2025-10-20",
+        "Until": "2025-10-21",
+        "Los": 1,
+        "ChannelUuid": "9e0e8dc3-2357-4db1-a283-40d5bc4ffd6b"
+      },
       "Success": false,
       "ErrorMessage": null,
       "DifferenceCount": 5,
@@ -56,6 +62,12 @@
       "Uuid": "9e0e8dc3-2357-4db1-a283-40d5bc4ffd6b",
       "Property": "Property 97936",
       "QueryConfiguration": "2 Nights - 2 Adults + 1 Child",
+      "QueryParameters": {
+        "From": "2025-11-15",
+        "Until": "2025-11-17",
+        "Los": 2,
+        "ChannelUuid": "9e0e8dc3-2357-4db1-a283-40d5bc4ffd6b"
+      },
       "Success": true,
       "ErrorMessage": null,
       "DifferenceCount": 0,

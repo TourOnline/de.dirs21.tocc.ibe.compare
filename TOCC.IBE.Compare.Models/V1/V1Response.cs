@@ -123,7 +123,8 @@ namespace TOCC.IBE.Compare.Models.V1
                 public class BaseOfferFactsGuaranteePaymentSplits
                 {
                     public decimal? AbsoluteValue { set; get; }
-                    
+
+                    [CustomCompare(typeof(DateTimePrecisionComparer), 60.0)]
                     public DateTime DueDate { set; get; }
                     public int? RelativeValue { set; get; }
                 }
