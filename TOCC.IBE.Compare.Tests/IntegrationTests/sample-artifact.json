@@ -1,0 +1,65 @@
+{
+  "Timestamp": "2025-10-20 06:47:00",
+  "V1BaseUrl": "https://v1-api.example.com",
+  "V2BaseUrl": "https://v2-api.example.com",
+  "TotalTestCases": 2,
+  "Summary": {
+    "Identical": 1,
+    "WithDifferences": 1,
+    "Errors": 0,
+    "TotalDifferences": 5
+  },
+  "Results": [
+    {
+      "Oid": "97936",
+      "Uuid": "9e0e8dc3-2357-4db1-a283-40d5bc4ffd6b",
+      "Property": "Property 97936",
+      "QueryConfiguration": "1 Night - 2 Adults",
+      "Success": false,
+      "ErrorMessage": null,
+      "DifferenceCount": 5,
+      "Differences": [
+        {
+          "Type": "ValueMismatch",
+          "Path": "Result.Properties[_oid=97936].Periods[From=15.10.2025 00:00:00].Sets[Key=0|2:a].Products[_uuid=042db757-a1a5-38f6-2403-1a5743986c04].Ticks[From=15.10.2025 00:00:00].Offers[Name=Price for 1 night].Facts.Cancellation.Fees[0].DueDate",
+          "Expected": "15.10.2025 13:25:48",
+          "Actual": "15.10.2025 13:26:52"
+        },
+        {
+          "Type": "MissingInV2",
+          "Path": "Result.Properties[_oid=97936].Periods[From=15.10.2025 00:00:00].Sets[Key=0|2:a].Products[_uuid=042db757-a1a5-38f6-2403-1a5743986c04].Ticks[From=15.10.2025 00:00:00].Offers[Name=Price for 1 night].PriceNet",
+          "Expected": "<exists>",
+          "Actual": "<missing>"
+        },
+        {
+          "Type": "MissingInV1",
+          "Path": "Result.Properties[_oid=97936].Periods[From=15.10.2025 00:00:00].Sets[Key=0|2:a].Products[_uuid=042db757-a1a5-38f6-2403-1a5743986c04].Ticks[From=15.10.2025 00:00:00].Offers[Name=Price for 1 night].Ticks[0].BoardType",
+          "Expected": "<missing>",
+          "Actual": "HalfBoard"
+        },
+        {
+          "Type": "ValueMismatch",
+          "Path": "Result.Properties[_oid=97936].Periods[From=15.10.2025 00:00:00].Sets[Key=0|2:a].Products[_uuid=042db757-a1a5-38f6-2403-1a5743986c04].Ticks[From=15.10.2025 00:00:00].Offers[Name=Price for 1 night].MainTariff",
+          "Expected": "TOCC.IBE.Compare.Models.V1.MainTariffInfo",
+          "Actual": ""
+        },
+        {
+          "Type": "MissingInV1",
+          "Path": "Info.Tags",
+          "Expected": "<missing>",
+          "Actual": "System.Collections.Generic.Dictionary`2[System.Guid,System.Object]"
+        }
+      ]
+    },
+    {
+      "Oid": "97936",
+      "Uuid": "9e0e8dc3-2357-4db1-a283-40d5bc4ffd6b",
+      "Property": "Property 97936",
+      "QueryConfiguration": "2 Nights - 2 Adults + 1 Child",
+      "Success": true,
+      "ErrorMessage": null,
+      "DifferenceCount": 0,
+      "Differences": []
+    }
+  ]
+}

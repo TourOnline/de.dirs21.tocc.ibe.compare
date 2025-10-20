@@ -1,0 +1,58 @@
+{
+  "Properties": [
+    {
+      "_oid": "97936",
+      "_uuid": "9e0e8dc3-2357-4db1-a283-40d5bc4ffd6b",
+      "Description": "Property 97936"
+    },
+    {
+      "_oid": "12345",
+      "_uuid": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+      "Description": "Property 12345"
+    }
+  ],
+  "QueryConfigurations": [
+    {
+      "Name": "1 Night - 2 Adults",
+      "Parameters": {
+        "BuildLevel": "Primary",
+        "Los": 1,
+        "Occupancy": [ "a,a" ],
+        "OutputMode": "Availability",
+        "SessionId": "5b04ee87-d123-4ad0-94aa-fcf402533a94",
+        "FilterByProducts": [],
+        "FilterByLegacyProducts": [],
+        "FilterByLegacyTariffs": [],
+        "FilterByTariffs": []
+      }
+    },
+    {
+      "Name": "2 Nights - 2 Adults + 1 Child",
+      "Parameters": {
+        "BuildLevel": "Primary",
+        "Los": 2,
+        "Occupancy": [ "a,a,5" ],
+        "OutputMode": "Availability",
+        "SessionId": "5b04ee87-d123-4ad0-94aa-fcf402533a94",
+        "FilterByProducts": [],
+        "FilterByLegacyProducts": [],
+        "FilterByLegacyTariffs": [],
+        "FilterByTariffs": []
+      }
+    },
+    {
+      "Name": "1 Week - 4 Adults (2 Rooms)",
+      "Parameters": {
+        "BuildLevel": "Primary",
+        "Los": 7,
+        "Occupancy": [ "a,a", "a,a" ],
+        "OutputMode": "Availability",
+        "SessionId": "5b04ee87-d123-4ad0-94aa-fcf402533a94",
+        "FilterByProducts": [],
+        "FilterByLegacyProducts": [],
+        "FilterByLegacyTariffs": [],
+        "FilterByTariffs": []
+      }
+    }
+  ]
+}

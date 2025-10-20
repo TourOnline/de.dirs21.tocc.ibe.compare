@@ -1,0 +1,70 @@
+<!-- Example TeamCity Build Configuration for Integration Tests -->
+<!-- Place this in .teamcity/settings.kts or configure via TeamCity UI -->
+
+<build-type>
+  <name>IBE API Comparison Integration Tests</name>
+  <description>Compares V1 and V2 IBE availability API responses</description>
+  
+  <settings>
+    <parameters>
+      <!-- Environment Variables -->
+      <param name="env.IntegrationTest__Enabled" value="true" />
+      <param name="env.IntegrationTest__V1BaseUrl" value="https://v1-api.yourcompany.com" />
+      <param name="env.IntegrationTest__V2BaseUrl" value="https://v2-api.yourcompany.com" />
+      <param name="env.ASPNETCORE_ENVIRONMENT" value="Production" />
+    </parameters>
+  </settings>
+  
+  <steps>
+    <!-- Step 1: Restore NuGet packages -->
+    <step type="dotnet">
+      <param name="command" value="restore" />
+      <param name="projects" value="TOCC.IBE.Compare.sln" />
+    </step>
+    
+    <!-- Step 2: Build solution -->
+    <step type="dotnet">
+      <param name="command" value="build" />
+      <param name="projects" value="TOCC.IBE.Compare.sln" />
+      <param name="configuration" value="Release" />
+    </step>
+    
+    <!-- Step 3: Run integration tests -->
+    <step type="dotnet">
+      <param name="command" value="test" />
+      <param name="projects" value="TOCC.IBE.Compare.Tests/TOCC.IBE.Compare.Tests.csproj" />
+      <param name="configuration" value="Release" />
+      <param name="filter" value="FullyQualifiedName~IntegrationTests" />
+      <param name="no-build" value="true" />
+    </step>
+  </steps>
+  
+  <features>
+    <!-- Enable XML test reporting -->
+    <feature type="xml-report-plugin">
+      <param name="xmlReportParsing.reportType" value="trx" />
+      <param name="xmlReportParsing.reportDirs" value="**/TestResults/*.trx" />
+    </feature>
+  </features>
+  
+  <artifact-dependencies>
+    <!-- Artifacts will be published automatically via service messages in the test -->
+  </artifact-dependencies>
+  
+  <triggers>
+    <!-- Example: Run nightly -->
+    <trigger type="schedulingTrigger">
+      <param name="cronExpression_min" value="0" />
+      <param name="cronExpression_hour" value="2" />
+      <param name="cronExpression_day" value="*" />
+      <param name="cronExpression_month" value="*" />
+      <param name="cronExpression_dayWeek" value="?" />
+      <param name="timezone" value="SERVER" />
+    </trigger>
+    
+    <!-- Example: Run on VCS changes -->
+    <trigger type="vcsTrigger">
+      <param name="quietPeriod" value="60" />
+    </trigger>
+  </triggers>
+</build-type>
