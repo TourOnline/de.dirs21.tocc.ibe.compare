@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using TOCC.Contracts.IBE.Models.Availability;
 using TOCC.IBE.Compare.Models.Core;
 
 namespace TOCC.IBE.Compare.Models.Common
@@ -125,7 +126,7 @@ namespace TOCC.IBE.Compare.Models.Common
                 return false;
             }
 
-            if (valueV1 is System.Collections.IEnumerable enum1 && 
+            if (valueV1 is System.Collections.IEnumerable enum1 &&
                 valueV2 is System.Collections.IEnumerable enum2 &&
                 !(valueV1 is string))
             {
@@ -188,29 +189,186 @@ namespace TOCC.IBE.Compare.Models.Common
 
     /// <summary>
     /// Compares Price objects with custom logic.
-    /// TODO: Implement actual price comparison logic.
+    /// Handles mapping between V1 and V2 price structures:
+    /// - Price.PerTick (V1) = Price.PerTick (V2)
+    /// - Price.Total (V1) = Price.Total (V2)
+    /// - Price.AfterDiscount.Total (V1) = Price.AfterDiscount.AfterTax (V2)
     /// </summary>
     public class PriceComparer : ICustomComparer
     {
         public bool Compare(object? valueV1, object? valueV2, string path, List<Difference> differences)
         {
-            // TODO: Implement price comparison logic
-            // For now, always return true (skip comparison)
-            return true;
+            // Handle null cases
+            if (valueV1 == null && valueV2 == null)
+                return true;
+
+            if (valueV1 == null || valueV2 == null)
+            {
+                differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                return false;
+            }
+
+            // Cast to V1 and V2 Price types
+            var priceV1 = valueV1 as TOCC.IBE.Compare.Models.V1.PriceInfoType;
+            var priceV2 = valueV2 as Price;
+
+            if (priceV1 == null || priceV2 == null)
+            {
+                // Fallback to default comparison if types don't match
+                return true;
+            }
+
+            bool isEqual = true;
+
+            // Compare PerTick
+            if (priceV1.PerTick != priceV2.PerTick)
+            {
+                differences.Add(new Difference($"{path}.PerTick", priceV1.PerTick, priceV2.PerTick, DifferenceType.ValueMismatch));
+                isEqual = false;
+            }
+
+            // Compare Total
+            if (priceV1.Total != priceV2.Total)
+            {
+                differences.Add(new Difference($"{path}.Total", priceV1.Total, priceV2.Total, DifferenceType.ValueMismatch));
+                isEqual = false;
+            }
+
+            // Compare AfterDiscount
+            if (priceV1.AfterDiscount != null && priceV2.AfterDiscount != null)
+            {
+                // CUSTOM MAPPING: V1.AfterDiscount.Total should equal V2.AfterDiscount.AfterTax
+                if (priceV1.AfterDiscount.Total != priceV2.AfterDiscount.AfterTax)
+                {
+                    differences.Add(new Difference($"{path}.AfterDiscount.Total",
+                        priceV1.AfterDiscount.Total,
+                        priceV2.AfterDiscount.AfterTax,
+                        DifferenceType.ValueMismatch));
+                    isEqual = false;
+                }
+            }
+            else if (priceV1.AfterDiscount != null || priceV2.AfterDiscount != null)
+            {
+                // One has AfterDiscount, the other doesn't
+                differences.Add(new Difference($"{path}.AfterDiscount",
+                    priceV1.AfterDiscount != null ? "<exists>" : "<missing>",
+                    priceV2.AfterDiscount != null ? "<exists>" : "<missing>",
+                    DifferenceType.ValueMismatch));
+                isEqual = false;
+            }
+
+            return isEqual;
         }
     }
 
     /// <summary>
-    /// Compares PersonPrices collections with custom logic.
-    /// TODO: Implement actual person prices comparison logic.
+    /// Compares List of OfferTick objects with custom logic.
+    /// Compares each V1.OfferTick.PersonPrices count with V2.OfferTick.Items.Count
     /// </summary>
-    public class PersonPricesComparer : ICustomComparer
+    public class OfferTickComparer : ICustomComparer
     {
         public bool Compare(object? valueV1, object? valueV2, string path, List<Difference> differences)
         {
-            // TODO: Implement person prices comparison logic
-            // For now, always return true (skip comparison)
-            return true;
+            // Handle null cases
+            if (valueV1 == null && valueV2 == null)
+                return true;
+
+            if (valueV1 == null || valueV2 == null)
+            {
+                differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                return false;
+            }
+
+            // Cast to List of OfferTicks
+            var ticksV1 = valueV1 as List<TOCC.IBE.Compare.Models.V1.OfferTicks>;
+            var ticksV2 = valueV2 as List<TOCC.Contracts.IBE.Models.Availability.Offers.OfferTick>;
+
+            if (ticksV1 == null || ticksV2 == null)
+            {
+                // Fallback to default comparison if types don't match
+                return true;
+            }
+
+            bool isEqual = true;
+
+            // Create lookup dictionary by Tariff_uuid for V2
+            var ticksV2Lookup = ticksV2.ToDictionary(t => t.Tariff_uuid, t => t);
+
+            // Compare each tick in V1 by matching Tariff_uuid
+            foreach (var tickV1 in ticksV1)
+            {
+                if (tickV1 == null)
+                    continue;
+
+                // Find matching tick in V2 by Tariff_uuid
+                if (!ticksV2Lookup.TryGetValue(tickV1.Tariff_uuid, out var tickV2))
+                {
+                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV1.Tariff_uuid}]", 
+                        "<exists>", 
+                        "<missing>", 
+                        DifferenceType.MissingInV2));
+                    isEqual = false;
+                    continue;
+                }
+
+                if (tickV2 == null)
+                {
+                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV1.Tariff_uuid}]", 
+                        tickV1, 
+                        null, 
+                        DifferenceType.ValueMismatch));
+                    isEqual = false;
+                    continue;
+                }
+
+                var tickPath = $"{path}[Tariff_uuid={tickV1.Tariff_uuid}]";
+
+                // Compare PersonPrices Count sum
+                if (tickV1.PersonPrices.Sum(p => p.Count) != tickV2.PersonPrices?.Items.Sum(i => i.Count))
+                {
+                    differences.Add(new Difference($"{tickPath}.PersonPrices.Count",
+                     tickV1.PersonPrices.Sum(p => p.Count),
+                     tickV2.PersonPrices?.Items.Sum(i => i.Count),
+                     DifferenceType.Count));
+                    isEqual = false;
+                }
+
+                // Compare PersonPrices AfterDiscount.AfterTax sum with Items Total sum
+                if (tickV1.PersonPrices.Sum(p => p.AfterDiscount?.AfterTax) != tickV2.PersonPrices?.Items.Sum(i => i.Total))
+                {
+                    differences.Add(new Difference($"{tickPath}.PersonPrices.AfterDiscount.AfterTax",
+                     tickV1.PersonPrices.Sum(p => p.AfterDiscount?.AfterTax),
+                     tickV2.PersonPrices?.Items.Sum(i => i.Total),
+                     DifferenceType.ValueMismatch));
+                    isEqual = false;
+                }
+
+                // Compare Price.Value with PersonPrices.Total.Total
+                if (tickV1.Price?.Value != tickV2.PersonPrices?.Total?.Total)
+                {
+                    differences.Add(new Difference($"{tickPath}.Price.Value",
+                       tickV1.Price?.Value,
+                       tickV2.PersonPrices?.Total?.Total,
+                       DifferenceType.ValueMismatch));
+                    isEqual = false;
+                }
+            }
+
+            // Check for items in V2 that don't exist in V1
+            var ticksV1Lookup = ticksV1.Where(t => t != null).ToDictionary(t => t.Tariff_uuid, t => t);
+            foreach (var tickV2 in ticksV2)
+            {
+                if (tickV2 != null && !ticksV1Lookup.ContainsKey(tickV2.Tariff_uuid))
+                {
+                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV2.Tariff_uuid}]", 
+                        "<missing>", 
+                        "<exists>", 
+                        DifferenceType.MissingInV1));
+                    isEqual = false;
+                }
+            }
+
+            return isEqual;
         }
     }
 
@@ -283,7 +441,7 @@ namespace TOCC.IBE.Compare.Models.Common
 
             // Try to parse as DateTime
             DateTime dt1, dt2;
-            
+
             if (valueV1 is DateTime dateTime1)
                 dt1 = dateTime1;
             else if (DateTime.TryParse(valueV1.ToString(), out dt1) == false)
