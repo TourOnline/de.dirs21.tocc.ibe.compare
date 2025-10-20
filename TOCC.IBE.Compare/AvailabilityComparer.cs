@@ -441,6 +441,7 @@ namespace TOCC.IBE.Compare
             // Build lookup dictionary for V2 items
             var dict2 = new Dictionary<object, object>();
             var nullItemsV2Count = 0;
+            bool allMatch = true;
             
             foreach (var item2 in listV2)
             {
@@ -457,7 +458,6 @@ namespace TOCC.IBE.Compare
                 }
             }
 
-            bool allMatch = true;
             var nullItemsV1Count = 0;
 
             // Match each V1 item with corresponding V2 item

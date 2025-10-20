@@ -55,6 +55,11 @@ namespace TOCC.IBE.Compare.Tests.Models
         /// Query parameters for this configuration.
         /// </summary>
         public QueryParametersDto Parameters { get; set; }
+
+        /// <summary>
+        /// If true, this query configuration will be skipped during test execution.
+        /// </summary>
+        public bool Disabled { get; set; } = false;
     }
 
     /// <summary>

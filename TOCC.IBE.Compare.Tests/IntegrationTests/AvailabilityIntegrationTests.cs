@@ -156,6 +156,10 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                 // Add configured test cases
                 foreach (var queryConfig in testData.QueryConfigurations)
                 {
+                    // Skip disabled configurations
+                    if (queryConfig.Disabled)
+                        continue;
+
                     var testCase = new TestCase
                     {
                         Oid = property._oid,
@@ -247,7 +251,6 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                 result.V2ResponseJson = v2Response;
                 var v2Data = JsonConvert.DeserializeObject<ApiResult<TOCC.Contracts.IBE.Models.Availability.Response>>(v2Response);
 
-                //v2Data.Value.Result.Properties.First().Periods.First().Sets.First().Products.First().Ticks.First().Offers.First().Ticks.First().PersonPrices;
                 // Compare responses
                 var comparer = new AvailabilityComparer();
                 ConfigureComparer(comparer);
