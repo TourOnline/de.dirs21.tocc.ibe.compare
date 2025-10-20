@@ -203,6 +203,17 @@ namespace TOCC.IBE.Compare
             var type1 = valueV1.GetType();
             var type2 = valueV2.GetType();
 
+            // Handle Enum to Enum comparison (both are enums)
+            if (type1.IsEnum && type2.IsEnum)
+            {
+                if (!valueV1.Equals(valueV2))
+                {
+                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                    return false;
+                }
+                return true;
+            }
+
             // Handle enum to string comparison
             if (type1 == typeof(string) && type2.IsEnum)
             {
@@ -243,6 +254,44 @@ namespace TOCC.IBE.Compare
                 }
             }
 
+            // Handle TimeSpan
+            if (valueV1 is TimeSpan ts1 && valueV2 is TimeSpan ts2)
+            {
+                if (ts1 != ts2)
+                {
+                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                    return false;
+                }
+                return true;
+            }
+
+            // Handle Nullable types - unwrap and compare
+            var underlyingType1 = Nullable.GetUnderlyingType(type1);
+            var underlyingType2 = Nullable.GetUnderlyingType(type2);
+            
+            if (underlyingType1 != null || underlyingType2 != null)
+            {
+                // At least one is nullable
+                var actualValue1 = underlyingType1 != null ? (valueV1 != null ? Convert.ChangeType(valueV1, underlyingType1) : null) : valueV1;
+                var actualValue2 = underlyingType2 != null ? (valueV2 != null ? Convert.ChangeType(valueV2, underlyingType2) : null) : valueV2;
+                
+                if (actualValue1 == null && actualValue2 == null)
+                    return true;
+                    
+                if (actualValue1 == null || actualValue2 == null)
+                {
+                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                    return false;
+                }
+                
+                if (!actualValue1.Equals(actualValue2))
+                {
+                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                    return false;
+                }
+                return true;
+            }
+
             // Handle primitive types, strings, decimals, and Guids
             if (type1.IsPrimitive || valueV1 is string || valueV1 is decimal || valueV1 is Guid)
             {
@@ -272,6 +321,17 @@ namespace TOCC.IBE.Compare
                     return false;
                 }
 
+                if (!valueV1.Equals(valueV2))
+                {
+                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                    return false;
+                }
+                return true;
+            }
+
+            // Optimize struct comparison - use Equals() if both are the same struct type
+            if (type1.IsValueType && type2.IsValueType && type1 == type2)
+            {
                 if (!valueV1.Equals(valueV2))
                 {
                     Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
@@ -380,9 +440,15 @@ namespace TOCC.IBE.Compare
 
             // Build lookup dictionary for V2 items
             var dict2 = new Dictionary<object, object>();
+            var nullItemsV2Count = 0;
+            
             foreach (var item2 in listV2)
             {
-                if (item2 == null) continue;
+                if (item2 == null)
+                {
+                    nullItemsV2Count++;
+                    continue;
+                }
 
                 var idValue = GetPropertyValue(item2, uniqueIdPropertyName);
                 if (idValue != null)
@@ -392,11 +458,16 @@ namespace TOCC.IBE.Compare
             }
 
             bool allMatch = true;
+            var nullItemsV1Count = 0;
 
             // Match each V1 item with corresponding V2 item
             foreach (var item1 in listV1)
             {
-                if (item1 == null) continue;
+                if (item1 == null)
+                {
+                    nullItemsV1Count++;
+                    continue;
+                }
 
                 var idValue = GetPropertyValue(item1, uniqueIdPropertyName);
                 if (idValue == null)
@@ -423,6 +494,13 @@ namespace TOCC.IBE.Compare
             foreach (var kvp in dict2)
             {
                 Differences.Add(new Difference($"{path}[{uniqueIdPropertyName}={kvp.Key}]", "<missing>", kvp.Value, DifferenceType.MissingInV1));
+                allMatch = false;
+            }
+
+            // Compare null item counts
+            if (nullItemsV1Count != nullItemsV2Count)
+            {
+                Differences.Add(new Difference($"{path}.NullItemCount", nullItemsV1Count, nullItemsV2Count, DifferenceType.Count));
                 allMatch = false;
             }
 
