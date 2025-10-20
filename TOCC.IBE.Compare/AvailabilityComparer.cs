@@ -20,6 +20,8 @@ namespace TOCC.IBE.Compare
         #region Constants
 
         private const int MaxDepth = 300;
+        private static readonly string[] CommonIdProperties = { "_uuid", "_id", "Id", "Guid", "UUID", "Name" };
+        private static readonly System.Text.RegularExpressions.Regex ArrayIndexRegex = new System.Text.RegularExpressions.Regex(@"\[\d+\]", System.Text.RegularExpressions.RegexOptions.Compiled);
 
         #endregion
 
@@ -50,6 +52,16 @@ namespace TOCC.IBE.Compare
         /// </summary>
         public List<string> SkipPaths { get; set; } = new List<string>();
 
+        /// <summary>
+        /// Cache for property information to avoid repeated reflection calls.
+        /// </summary>
+        private readonly Dictionary<Type, PropertyInfo[]> _propertyCache = new Dictionary<Type, PropertyInfo[]>();
+
+        /// <summary>
+        /// Cache for property lookup by name to avoid O(n) searches.
+        /// </summary>
+        private readonly Dictionary<Type, Dictionary<string, PropertyInfo>> _propertyLookupCache = new Dictionary<Type, Dictionary<string, PropertyInfo>>();
+
         #endregion
 
         #region Public Methods
@@ -63,6 +75,8 @@ namespace TOCC.IBE.Compare
         public bool Compare(V1Response responseV1, Response responseV2)
         {
             Differences.Clear();
+            _propertyCache.Clear();
+            _propertyLookupCache.Clear();
             CompareObjects(responseV1, responseV2, responseV1?.GetType(), responseV2?.GetType(), string.Empty, 0);
             return Differences.Count == 0;
         }
@@ -93,8 +107,9 @@ namespace TOCC.IBE.Compare
                 return false;
             }
 
-            var propsV1 = typeV1.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            var propsV2 = typeV2.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var propsV1 = GetCachedProperties(typeV1);
+            var propsV2 = GetCachedProperties(typeV2);
+            var propsV2Lookup = GetCachedPropertyLookup(typeV2);
 
             // Compare properties in V1
             foreach (var propV1 in propsV1)
@@ -105,7 +120,7 @@ namespace TOCC.IBE.Compare
                 if (IsPathSkipped(currentPath))
                     continue;
 
-                var propV2 = propsV2.FirstOrDefault(p => p.Name == propV1.Name);
+                propsV2Lookup.TryGetValue(propV1.Name, out var propV2);
                 if (propV2 == null)
                 {
                     Differences.Add(new Difference(currentPath, "<exists>", "<missing>", DifferenceType.MissingInV2));
@@ -136,9 +151,10 @@ namespace TOCC.IBE.Compare
             }
 
             // Check for properties in V2 that don't exist in V1
+            var propsV1Lookup = GetCachedPropertyLookup(typeV1);
             foreach (var propV2 in propsV2)
             {
-                var propV1 = propsV1.FirstOrDefault(p => p.Name == propV2.Name);
+                propsV1Lookup.TryGetValue(propV2.Name, out var propV1);
                 if (propV1 == null)
                 {
                     var currentPath = string.IsNullOrEmpty(path) ? propV2.Name : $"{path}.{propV2.Name}";
@@ -203,8 +219,25 @@ namespace TOCC.IBE.Compare
             var type1 = valueV1.GetType();
             var type2 = valueV2.GetType();
 
-            // Handle Enum to Enum comparison (both are enums)
-            if (type1.IsEnum && type2.IsEnum)
+            // Handle Enum and String comparison
+            // If either type is an enum or string, convert both to strings and compare
+            // This handles: enum-to-enum, enum-to-string, string-to-enum
+            if (type1.IsEnum || type2.IsEnum || type1 == typeof(string) || type2 == typeof(string))
+            {
+                var str1 = valueV1.ToString();
+                var str2 = valueV2.ToString();
+                
+                if (!string.Equals(str1, str2, StringComparison.Ordinal))
+                {
+                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                    return false;
+                }
+                
+                return true;
+            }
+
+            // Handle DateTime and DateTimeOffset
+            if ((valueV1 is DateTime || valueV1 is DateTimeOffset) && (valueV2 is DateTime || valueV2 is DateTimeOffset))
             {
                 if (!valueV1.Equals(valueV2))
                 {
@@ -213,45 +246,11 @@ namespace TOCC.IBE.Compare
                 }
                 return true;
             }
-
-            // Handle enum to string comparison
-            if (type1 == typeof(string) && type2.IsEnum)
+            else if (valueV1 is DateTime || valueV1 is DateTimeOffset)
             {
-                if (!string.Equals((string)valueV1, valueV2.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
-                    return false;
-                }
-                return true;
-            }
-
-            if (type2 == typeof(string) && type1.IsEnum)
-            {
-                if (!string.Equals(valueV1.ToString(), (string)valueV2, StringComparison.OrdinalIgnoreCase))
-                {
-                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
-                    return false;
-                }
-                return true;
-            }
-
-            // Handle DateTime and DateTimeOffset
-            if (valueV1 is DateTime || valueV1 is DateTimeOffset)
-            {
-                if (valueV2 is DateTime || valueV2 is DateTimeOffset)
-                {
-                    if (!valueV1.Equals(valueV2))
-                    {
-                        Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
-                        return false;
-                    }
-                    return true;
-                }
-                else
-                {
-                    Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
-                    return false;
-                }
+                // Type mismatch
+                Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
+                return false;
             }
 
             // Handle TimeSpan
@@ -271,20 +270,19 @@ namespace TOCC.IBE.Compare
             
             if (underlyingType1 != null || underlyingType2 != null)
             {
-                // At least one is nullable
-                var actualValue1 = underlyingType1 != null ? (valueV1 != null ? Convert.ChangeType(valueV1, underlyingType1) : null) : valueV1;
-                var actualValue2 = underlyingType2 != null ? (valueV2 != null ? Convert.ChangeType(valueV2, underlyingType2) : null) : valueV2;
+                // At least one is nullable - both values are already boxed, just compare directly
+                // For nullable enums, valueV1 and valueV2 are already the enum values (not Nullable<T>)
+                // Ensure both types match before comparing values
+                var actualType1 = underlyingType1 ?? type1;
+                var actualType2 = underlyingType2 ?? type2;
                 
-                if (actualValue1 == null && actualValue2 == null)
-                    return true;
-                    
-                if (actualValue1 == null || actualValue2 == null)
+                if (actualType1 != actualType2)
                 {
                     Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
                     return false;
                 }
                 
-                if (!actualValue1.Equals(actualValue2))
+                if (!valueV1.Equals(valueV2))
                 {
                     Differences.Add(new Difference(path, valueV1, valueV2, DifferenceType.ValueMismatch));
                     return false;
@@ -372,7 +370,9 @@ namespace TOCC.IBE.Compare
                     continue;
                 }
 
-                CompareValues(dict1[key], dict2[key], keyPath, depth + 1);
+                var value1 = dict1[key];
+                var value2 = dict2[key];
+                CompareValues(value1, value2, keyPath, depth + 1);
             }
 
             foreach (var key in dict2.Keys)
@@ -586,7 +586,7 @@ namespace TOCC.IBE.Compare
             }
 
             // Priority 1: Check for UniqueIdentifierAttribute on properties
-            var properties = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var properties = GetCachedProperties(itemType);
             foreach (var prop in properties)
             {
                 var uniqueIdAttr = prop.GetCustomAttribute<TOCC.IBE.Compare.Models.Attributes.UniqueIdentifierAttribute>();
@@ -601,8 +601,7 @@ namespace TOCC.IBE.Compare
             }
 
             // Priority 2: Check for common unique identifier properties (fallback)
-            var commonIdProperties = new[] { "_uuid", "_id", "Id", "Guid", "UUID", "Name" };
-            foreach (var propName in commonIdProperties)
+            foreach (var propName in CommonIdProperties)
             {
                 var prop = properties.FirstOrDefault(p => p.Name.Equals(propName, StringComparison.OrdinalIgnoreCase));
                 if (prop == null)
@@ -679,7 +678,7 @@ namespace TOCC.IBE.Compare
 
             // Normalize the path by removing array indices
             // "Result.Properties[0].Periods[0]" becomes "Result.Properties.Periods"
-            var normalizedPath = System.Text.RegularExpressions.Regex.Replace(path, @"\[\d+\]", "");
+            var normalizedPath = ArrayIndexRegex.Replace(path, "");
 
             // Check for exact match or prefix match
             foreach (var skipPath in SkipPaths)
@@ -694,6 +693,37 @@ namespace TOCC.IBE.Compare
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Gets cached property information for a type.
+        /// </summary>
+        private PropertyInfo[] GetCachedProperties(Type type)
+        {
+            if (!_propertyCache.TryGetValue(type, out var properties))
+            {
+                properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                _propertyCache[type] = properties;
+            }
+            return properties;
+        }
+
+        /// <summary>
+        /// Gets cached property lookup dictionary for a type.
+        /// </summary>
+        private Dictionary<string, PropertyInfo> GetCachedPropertyLookup(Type type)
+        {
+            if (!_propertyLookupCache.TryGetValue(type, out var lookup))
+            {
+                var properties = GetCachedProperties(type);
+                lookup = new Dictionary<string, PropertyInfo>(properties.Length);
+                foreach (var prop in properties)
+                {
+                    lookup[prop.Name] = prop;
+                }
+                _propertyLookupCache[type] = lookup;
+            }
+            return lookup;
         }
 
         #endregion
