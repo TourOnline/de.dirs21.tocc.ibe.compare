@@ -387,6 +387,13 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             var baseDir = AppContext.BaseDirectory;
             var artifactsDir = Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", _artifactsFolder));
+            
+            // Clear artifacts folder if it exists
+            if (Directory.Exists(artifactsDir))
+            {
+                Directory.Delete(artifactsDir, recursive: true);
+            }
+            
             Directory.CreateDirectory(artifactsDir);
 
             // Generate individual artifact files for each test case
