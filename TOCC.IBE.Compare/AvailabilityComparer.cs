@@ -21,7 +21,7 @@ namespace TOCC.IBE.Compare
 
         private const int MaxDepth = 300;
         private static readonly string[] CommonIdProperties = { "_uuid", "_id", "Id", "Guid", "UUID", "Name" };
-        private static readonly System.Text.RegularExpressions.Regex ArrayIndexRegex = new System.Text.RegularExpressions.Regex(@"\[\d+\]", System.Text.RegularExpressions.RegexOptions.Compiled);
+        private static readonly System.Text.RegularExpressions.Regex ArrayIndexRegex = new System.Text.RegularExpressions.Regex(@"\[[^\]]+\]", System.Text.RegularExpressions.RegexOptions.Compiled);
 
         #endregion
 

@@ -2,14 +2,9 @@
   "Properties": [
     {
       "_oid": "97936",
-      "_uuid": "9e0e8dc3-2357-4db1-a283-40d5bc4ffd6b",
+      "_uuid": "2957fb96-d7d4-4d38-b489-b97bc7548a41",
       "Description": "Property 97936"
-    },
-    {
-      "_oid": "12345",
-      "_uuid": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
-      "Description": "Property 12345"
-    }
+    } 
   ],
   "QueryConfigurations": [
     {

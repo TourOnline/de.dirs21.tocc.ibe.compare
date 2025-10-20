@@ -352,13 +352,19 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
         private void ConfigureComparer(AvailabilityComparer comparer)
         {
             // Configure paths to skip during comparison
+            // Note: Array indices and identifiers like [_oid=97936] are automatically removed during comparison
             comparer.SkipPaths = new List<string>
             {
+                // Skip specific Ticks properties under Offers
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.MinStayThrough",
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.MinLos",
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsCta",
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsCtd",
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsMixable",
+                
+                // Skip cache-related properties
+                "Result.Properties.Periods.CacheSetName",
+                "Result.Properties.Periods.IsFromCache",
             };
         }
 

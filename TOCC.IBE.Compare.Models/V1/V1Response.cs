@@ -180,8 +180,6 @@ namespace TOCC.IBE.Compare.Models.V1
 
         public class OfferTicks
         {
-
-
             public int? Cooldown { set; get; }
             public DateTime From { set; get; }
             public bool? IsDependency { set; get; }
