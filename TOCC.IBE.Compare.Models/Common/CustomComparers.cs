@@ -291,8 +291,8 @@ namespace TOCC.IBE.Compare.Models.Common
 
             bool isEqual = true;
 
-            // Create lookup dictionary by Tariff_uuid for V2
-            var ticksV2Lookup = ticksV2.ToDictionary(t => t.Tariff_uuid, t => t);
+            // Create lookup dictionary by composite key (Tariff_uuid, From) for V2
+            var ticksV2Lookup = ticksV2.ToDictionary(t => (t.Tariff_uuid, t.From), t => t);
 
             // Compare each tick in V1 by matching Tariff_uuid
             foreach (var tickV1 in ticksV1)
@@ -300,10 +300,11 @@ namespace TOCC.IBE.Compare.Models.Common
                 if (tickV1 == null)
                     continue;
 
-                // Find matching tick in V2 by Tariff_uuid
-                if (!ticksV2Lookup.TryGetValue(tickV1.Tariff_uuid, out var tickV2))
+                // Find matching tick in V2 by composite key (Tariff_uuid, From)
+                var compositeKey = (tickV1.Tariff_uuid, tickV1.From);
+                if (!ticksV2Lookup.TryGetValue(compositeKey, out var tickV2))
                 {
-                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV1.Tariff_uuid}]", 
+                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV1.Tariff_uuid}, From={tickV1.From:yyyy-MM-dd HH:mm:ss}]", 
                         "<exists>", 
                         "<missing>", 
                         DifferenceType.MissingInV2));
@@ -313,7 +314,7 @@ namespace TOCC.IBE.Compare.Models.Common
 
                 if (tickV2 == null)
                 {
-                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV1.Tariff_uuid}]", 
+                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV1.Tariff_uuid}, From={tickV1.From:yyyy-MM-dd HH:mm:ss}]", 
                         tickV1, 
                         null, 
                         DifferenceType.ValueMismatch));
@@ -321,7 +322,7 @@ namespace TOCC.IBE.Compare.Models.Common
                     continue;
                 }
 
-                var tickPath = $"{path}[Tariff_uuid={tickV1.Tariff_uuid}]";
+                var tickPath = $"{path}[Tariff_uuid={tickV1.Tariff_uuid}, From={tickV1.From:yyyy-MM-dd HH:mm:ss}]";
 
                 // Compare PersonPrices Count sum
                 if (tickV1.PersonPrices.Sum(p => p.Count) != tickV2.PersonPrices?.Items.Sum(i => i.Count))
@@ -355,12 +356,12 @@ namespace TOCC.IBE.Compare.Models.Common
             }
 
             // Check for items in V2 that don't exist in V1
-            var ticksV1Lookup = ticksV1.Where(t => t != null).ToDictionary(t => t.Tariff_uuid, t => t);
+            var ticksV1Lookup = ticksV1.Where(t => t != null).ToDictionary(t => (t.Tariff_uuid, t.From), t => t);
             foreach (var tickV2 in ticksV2)
             {
-                if (tickV2 != null && !ticksV1Lookup.ContainsKey(tickV2.Tariff_uuid))
+                if (tickV2 != null && !ticksV1Lookup.ContainsKey((tickV2.Tariff_uuid, tickV2.From)))
                 {
-                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV2.Tariff_uuid}]", 
+                    differences.Add(new Difference($"{path}[Tariff_uuid={tickV2.Tariff_uuid}, From={tickV2.From:yyyy-MM-dd HH:mm:ss}]", 
                         "<missing>", 
                         "<exists>", 
                         DifferenceType.MissingInV1));

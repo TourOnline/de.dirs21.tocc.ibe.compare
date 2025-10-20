@@ -486,10 +486,11 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
 
             if (isTeamCity)
             {
-                // TeamCity service message to publish artifact
+                // TeamCity service message to publish entire artifacts directory
                 // Format: ##teamcity[publishArtifacts 'path']
-                Console.WriteLine($"##teamcity[publishArtifacts '{artifactPath}']");
-                Console.WriteLine($"📤 Published artifact to TeamCity: {Path.GetFileName(artifactPath)}");
+                var artifactsDir = Path.GetDirectoryName(artifactPath);
+                Console.WriteLine($"##teamcity[publishArtifacts '{artifactsDir}/**']");
+                Console.WriteLine($"📤 Published all artifacts to TeamCity from: {artifactsDir}");
             }
             else
             {
