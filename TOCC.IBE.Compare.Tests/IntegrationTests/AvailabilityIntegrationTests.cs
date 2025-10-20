@@ -247,6 +247,7 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                 result.V2ResponseJson = v2Response;
                 var v2Data = JsonConvert.DeserializeObject<ApiResult<TOCC.Contracts.IBE.Models.Availability.Response>>(v2Response);
 
+                //v2Data.Value.Result.Properties.First().Periods.First().Sets.First().Products.First().Ticks.First().Offers.First().Ticks.First().PersonPrices;
                 // Compare responses
                 var comparer = new AvailabilityComparer();
                 ConfigureComparer(comparer);
@@ -361,7 +362,7 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsCta",
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsCtd",
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsMixable",
-                
+                "Result.Properties.Periods.Sets.Products.Ticks.InnerTicks",
                 // Skip cache-related properties
                 "Result.Properties.Periods.CacheSetName",
                 "Result.Properties.Periods.IsFromCache",

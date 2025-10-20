@@ -16,6 +16,9 @@ namespace TOCC.IBE.Compare.Models.V1
         [UniqueIdentifier("_uuid")]
         public List<ProductResult> Products { set; get; }
         public int? AssignedPersons { get; set; }
+
+        [SkipValidation]
+        public Guid _uuid { set; get; }
     }
 
     public class ProductResult : BaseResultItem

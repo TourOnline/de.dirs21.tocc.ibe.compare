@@ -120,16 +120,16 @@ namespace TOCC.IBE.Compare
                 if (IsPathSkipped(currentPath))
                     continue;
 
+                // Skip if marked with SkipValidationAttribute
+                if (propV1.IsDefined(typeof(SkipValidationAttribute), true))
+                    continue;
+
                 propsV2Lookup.TryGetValue(propV1.Name, out var propV2);
                 if (propV2 == null)
                 {
                     Differences.Add(new Difference(currentPath, "<exists>", "<missing>", DifferenceType.MissingInV2));
                     continue;
                 }
-
-                // Skip if marked with SkipValidationAttribute
-                if (propV1.IsDefined(typeof(SkipValidationAttribute), true))
-                    continue;
 
                 var valueV1 = propV1.GetValue(objV1);
                 var valueV2 = propV2.GetValue(objV2);

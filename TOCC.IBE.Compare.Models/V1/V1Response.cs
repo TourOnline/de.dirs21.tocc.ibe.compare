@@ -52,16 +52,23 @@ namespace TOCC.IBE.Compare.Models.V1
         [SkipValidation]
         public int Los { set; get; }
 
+        [SkipValidation]
         public MainTariffInfo MainTariff { set; get; }
         public Guid MainTariff_uuid { set; get; }
+        
+        [SkipValidation]
         public string Name { get; set; }
         
         [CustomCompare(typeof(PriceComparer))]
         public PriceInfoType Price { set; get; }
+
+        [SkipValidation]
         public PriceInfoType PriceNet { set; get; }
         public ValidatedSetTypes? SubType { set; get; }
         public List<Tag> Tags { set; get; } = new List<Tag>();
         public List<BaseOfferTaxes> Taxes { set; get; }
+
+        [CustomCompare(typeof(OfferTickComparer))]
         public List<OfferTicks> Ticks { set; get; }
         public ValidatedSetTypes Type { get; }
 
@@ -175,26 +182,23 @@ namespace TOCC.IBE.Compare.Models.V1
             public int? MaxLos { get; set; }
             public int? MaxNumberOfPersons { set; get; }
             public int? MinLos { get; set; }
-
         }
+    }
 
-        public class OfferTicks
-        {
-            public int? Cooldown { set; get; }
-            public DateTime From { set; get; }
-            public bool? IsDependency { set; get; }
-            public string Name { set; get; }
-            public int NumberOfTicks { set; get; }
-            
-            [CustomCompare(typeof(PersonPricesComparer))]
-            public List<PersonPrice> PersonPrices { set; get; }
-            public PriceObsolet Price { set; get; }
-            public string Product_Name { set; get; }
-            public Guid? Product_uuid { set; get; }
-            public Guid Tariff_uuid { set; get; }
-            public TickInfoType TickInfo { set; get; }
-            public DateTime Until { set; get; }
-        }
+    public class OfferTicks
+    {
+        public int? Cooldown { set; get; }
+        public DateTime From { set; get; }
+        public bool? IsDependency { set; get; }
+        public string Name { set; get; }
+        public int NumberOfTicks { set; get; }
+        public List<PersonPrice> PersonPrices { set; get; }
+        public PriceObsolet Price { set; get; }
+        public string Product_Name { set; get; }
+        public Guid? Product_uuid { set; get; }
+        public Guid Tariff_uuid { set; get; }
+        public TickInfoType TickInfo { set; get; }
+        public DateTime Until { set; get; }
     }
 
     public class TickInfoType

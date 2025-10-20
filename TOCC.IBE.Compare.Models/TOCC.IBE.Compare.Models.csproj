@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,6 +14,18 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TOCC.Contracts.IBE">
+      <HintPath>..\Types\TOCC.Contracts.IBE.dll</HintPath>
+    </Reference>
+    <Reference Include="TOCC.Contracts.Default">
+      <HintPath>..\Types\TOCC.Contracts.Default.dll</HintPath>
+    </Reference>
+    <Reference Include="TOCC.Core.Enums">
+      <HintPath>..\Types\TOCC.Core.Enums.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -19,6 +19,8 @@ namespace TOCC.IBE.Compare.Models.V1
 
         [UniqueIdentifier("From")]
         public List<Period> Periods { set; get; }
+
+        [SkipValidation]
         public string Directory { set; get; }
     }
 
