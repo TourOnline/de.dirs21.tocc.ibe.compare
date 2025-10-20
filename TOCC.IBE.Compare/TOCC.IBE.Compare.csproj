@@ -23,9 +23,11 @@
   <ItemGroup>
     <Reference Include="TOCC.Contracts.IBE">
       <HintPath>..\Types\TOCC.Contracts.IBE.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="TOCC.Core.Enums">
       <HintPath>..\Types\TOCC.Core.Enums.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
 

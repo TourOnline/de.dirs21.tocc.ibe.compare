@@ -13,14 +13,13 @@ namespace TOCC.IBE.Compare.Models.V1
         public List<Property> Properties { set; get; }
     }
 
-    public class Property : BaseResultItem
+    public class Property : PrpertyBaseResultItem
     {
         public long? _oid { set; get; }
 
         [UniqueIdentifier("From")]
         public List<Period> Periods { set; get; }
 
-        [SkipValidation]
         public string Directory { set; get; }
     }
 

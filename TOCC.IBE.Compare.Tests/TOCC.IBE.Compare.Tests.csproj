@@ -18,21 +18,27 @@
     <ProjectReference Include="..\TOCC.IBE.Compare\TOCC.IBE.Compare.csproj" />
     <Reference Include="TOCC.Contracts.IBE">
       <HintPath>..\Types\TOCC.Contracts.IBE.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="TOCC.Core.Enums">
       <HintPath>..\Types\TOCC.Core.Enums.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="TOCC.Contracts.Default">
       <HintPath>..\Types\TOCC.Contracts.Default.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="TOCC.Contracts.Grid">
       <HintPath>..\Types\TOCC.Contracts.Grid.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="TOCC.Core">
       <HintPath>..\Types\TOCC.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="TOCC.Models.Default">
       <HintPath>..\Types\TOCC.Models.Default.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

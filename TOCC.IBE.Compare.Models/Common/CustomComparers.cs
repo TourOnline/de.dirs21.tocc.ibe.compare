@@ -373,6 +373,47 @@ namespace TOCC.IBE.Compare.Models.Common
     }
 
     /// <summary>
+    /// Compares TOCC.IBE.Compare.Models.V1.Price objects with null check only.
+    /// Skips comparison if either value is null.
+    /// </summary>
+    public class PropertyPriceComparer : ICustomComparer
+    {
+        public bool Compare(object? valueV1, object? valueV2, string path, List<Difference> differences)
+        {
+            // If either is null, skip comparison (consider them equal)
+            if (valueV1 == null || valueV2 == null)
+                return true;
+
+
+            var priceV1 = valueV1 as TOCC.IBE.Compare.Models.V1.PriceInfo;
+            var priceV2 = valueV2 as MinMaxPrice;
+
+            bool isEqual = true;
+            if (priceV1.Min?.PerTick != priceV2?.Min?.PerTick)
+            {
+                differences.Add(new Difference($"{path}.Min.PerTick",
+                       priceV1.Min?.PerTick,
+                       priceV2?.Min?.PerTick,
+                       DifferenceType.ValueMismatch));
+                isEqual= false;
+            }
+
+
+            if (priceV1.Min?.Total != priceV2?.Min?.Total)
+            {
+                differences.Add(new Difference($"{path}.Min.Total",
+                                    priceV1.Min?.Total,
+                                    priceV2?.Min?.Total,
+                                    DifferenceType.ValueMismatch));
+                isEqual = false;
+            }
+
+            // Both are not null, allow default comparison to proceed
+            return isEqual;
+        }
+    }
+
+    /// <summary>
     /// Example: Compares only if both values are not null (ignores null differences).
     /// </summary>
     public class IgnoreNullComparer : ICustomComparer

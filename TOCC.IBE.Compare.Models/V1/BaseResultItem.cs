@@ -17,6 +17,21 @@ namespace TOCC.IBE.Compare.Models.V1
         public PriceInfo Price { set; get; }
         public List<Tag> Tags { set; get; }
     }
+
+    // CustomCompare PropertyPriceComparer needed
+    public class PrpertyBaseResultItem
+    {
+        public ConstraintsInfo? Constraints { get; set; }
+        public bool HasConstraints { set; get; }
+        public bool IsAvailable { set; get; }
+        public bool? IsValid { set; get; }
+
+        [CustomCompare(typeof(PropertyPriceComparer))]
+        public PriceInfo Price { set; get; }
+        public List<Tag> Tags { set; get; }
+    }
+
+
     public class ConstraintsInfo
     {
         public int? Capacity { set; get; }
