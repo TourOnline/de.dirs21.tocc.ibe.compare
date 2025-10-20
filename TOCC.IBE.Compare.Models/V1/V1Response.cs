@@ -5,8 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using TOCC.IBE.Compare.Models.Common;
+using TOCC.Core.Extensions;
+using TOCC.Core.Interfaces;
+using TOCC.Core.Models.CodeGeneration;
 using TOCC.IBE.Compare.Models.Attributes;
+using TOCC.IBE.Compare.Models.Common;
 using TOCC.IBE.Compare.Models.Core;
 
 namespace TOCC.IBE.Compare.Models.V1
@@ -18,13 +21,13 @@ namespace TOCC.IBE.Compare.Models.V1
         public Info Info { set; get; }
         public Result Result { set; get; }
         public QueryParametersTypes Type { set; get; }
-        
+
         [SkipValidation]
         public object Data { set; get; }
-        
+
         [SkipValidation]
         public bool Explain { set; get; }
-        
+
         [SkipValidation]
         public object IgnoreSteps { set; get; }
     }
@@ -55,10 +58,10 @@ namespace TOCC.IBE.Compare.Models.V1
         [SkipValidation]
         public MainTariffInfo MainTariff { set; get; }
         public Guid MainTariff_uuid { set; get; }
-        
+
         [SkipValidation]
         public string Name { get; set; }
-        
+
         [CustomCompare(typeof(PriceComparer))]
         public PriceInfoType Price { set; get; }
 
@@ -242,7 +245,7 @@ namespace TOCC.IBE.Compare.Models.V1
         public Guid _uuid { get; set; }
         public long _id { get; set; }
         public string Name { get; set; } = string.Empty;
-        
+
         [CustomCompare(typeof(ObjectToStringComparer))]
         public object Terms { get; set; }
     }
@@ -405,7 +408,7 @@ namespace TOCC.IBE.Compare.Models.V1
         public IList<TariffProperties> Properties { get; set; }
         public TariffSelling Selling { get; set; }
         public TariffSettings Settings { get; set; }
-        public object Restrictions { get; set; }
+        public TariffRestrictions Restrictions { get; set; }
 
         public class TariffViewModelContent
         {
@@ -421,6 +424,24 @@ namespace TOCC.IBE.Compare.Models.V1
         public bool? IsMixable { get; set; }
         public CloseOtherTariffsTypes? CloseOtherTariffs { get; set; }
         public TariffVisibilityModes? VisibilityMode { get; set; }
+    }
+
+    public partial class TariffRestrictions
+    {
+        public virtual TariffRestrictionsAge Age { set; get; }
+        public virtual TariffRestrictionsOccupancy Occupancy { set; get; }
+    }
+
+    public partial class TariffRestrictionsOccupancy
+    {
+        public System.Int32? Max { set; get; }
+        public System.Int32? Min { set; get; }
+    }
+
+    public class TariffRestrictionsAge
+    {
+        public System.Int32? Max { set; get; }
+        public System.Int32? Min { set; get; }
     }
 
     public abstract class TenantSettings
