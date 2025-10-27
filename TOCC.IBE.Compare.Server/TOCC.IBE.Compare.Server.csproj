@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Build performance optimizations -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);NETSDK1138</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Swagger packages commented out for faster builds - uncomment when needed for API development -->
+    <!-- <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="6.0.0" /> -->
+    <!-- <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" /> -->
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

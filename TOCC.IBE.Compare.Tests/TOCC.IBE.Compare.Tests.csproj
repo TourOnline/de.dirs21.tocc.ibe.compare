@@ -2,6 +2,9 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <IsPackable>false</IsPackable>
+    <!-- Build performance optimizations -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);NU1900;NETSDK1138</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="xunit" Version="2.4.2" />
@@ -16,6 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TOCC.IBE.Compare\TOCC.IBE.Compare.csproj" />
+    <ProjectReference Include="..\TOCC.IBE.Compare.Server\TOCC.IBE.Compare.Server.csproj" />
     <Reference Include="TOCC.Contracts.IBE">
       <HintPath>..\Types\TOCC.Contracts.IBE.dll</HintPath>
       <Private>True</Private>
@@ -46,12 +50,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Test\old.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="appsettings.Development.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="TestData\test-cases.json">

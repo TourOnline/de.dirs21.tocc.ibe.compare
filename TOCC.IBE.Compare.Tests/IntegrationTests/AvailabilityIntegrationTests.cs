@@ -12,6 +12,7 @@ using TOCC.IBE.Compare.Models.Common;
 using TOCC.IBE.Compare.Models.Core;
 using TOCC.IBE.Compare.Models.V1;
 using TOCC.IBE.Compare.Tests.Models;
+using TOCC.IBE.Compare.Server.Helpers;
 using Xunit;
 
 namespace TOCC.IBE.Compare.Tests.IntegrationTests
@@ -32,14 +33,9 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
 
         public AvailabilityIntegrationTests()
         {
-            // Build configuration from appsettings
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}.json", optional: true)
-                .AddEnvironmentVariables();
-
-            _configuration = builder.Build();
+            // Build configuration using centralized ConfigurationHelper
+            // Priority: 1. Explicit path, 2. TOCC_CONFIG_PATH env var, 3. Current directory
+            _configuration = ConfigurationHelper.BuildConfiguration();
 
             // Read configuration
             _isEnabled = _configuration.GetValue<bool>("IntegrationTest:Enabled");
