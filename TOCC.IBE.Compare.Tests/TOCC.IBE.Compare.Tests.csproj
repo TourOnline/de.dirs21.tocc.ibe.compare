@@ -52,12 +52,13 @@
     <None Update="Test\old.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TestData\test-cases.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <!-- Copy test-cases.json from common TestData folder -->
+    <None Include="..\TestData\test-cases.json">
+      <Link>TestData\test-cases.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="artifacts\" />
-    <Folder Include="TestResults\Differences\" />
   </ItemGroup>
 </Project>

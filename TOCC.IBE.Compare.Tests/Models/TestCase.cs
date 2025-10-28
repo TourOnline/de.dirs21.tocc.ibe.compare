@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using TOCC.IBE.Compare.Models.Common;
+using QueryParametersDto = TOCC.IBE.Compare.Models.Common.TestCaseParameters;
 
 namespace TOCC.IBE.Compare.Tests.Models
 {

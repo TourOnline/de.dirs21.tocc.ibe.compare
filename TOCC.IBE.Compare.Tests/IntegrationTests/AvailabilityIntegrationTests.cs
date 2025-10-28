@@ -11,9 +11,18 @@ using TOCC.Core.Models;
 using TOCC.IBE.Compare.Models.Common;
 using TOCC.IBE.Compare.Models.Core;
 using TOCC.IBE.Compare.Models.V1;
+using TOCC.IBE.Compare.Models.Services;
 using TOCC.IBE.Compare.Tests.Models;
+using TOCC.IBE.Compare.Tests.Helpers;
+using ComparisonTestCaseResult = TOCC.IBE.Compare.Models.Core.ComparisonTestCaseResult;
 using TOCC.IBE.Compare.Server.Helpers;
+using TOCC.IBE.Compare.Server.Services;
 using Xunit;
+using ApiCallEnvelope = TOCC.IBE.Compare.Models.Common.ApiCallEnvelope;
+using TestCaseParameters = TOCC.IBE.Compare.Models.Common.TestCaseParameters;
+using QueryParametersDto = TOCC.IBE.Compare.Models.Common.TestCaseParameters;
+using PropertyTestCase = TOCC.IBE.Compare.Models.Common.PropertyTestCase;
+using ComparisonRequest = TOCC.IBE.Compare.Models.Common.ComparisonRequest;
 
 namespace TOCC.IBE.Compare.Tests.IntegrationTests
 {
@@ -30,6 +39,8 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
         private readonly string _v2BaseUrl;
         private readonly string _testCasesFile;
         private readonly string _artifactsFolder;
+        private readonly ITestCaseGenerator _testCaseGenerator;
+        private readonly IComparisonService _comparisonService;
 
         public AvailabilityIntegrationTests()
         {
@@ -41,14 +52,27 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             _isEnabled = _configuration.GetValue<bool>("IntegrationTest:Enabled");
             _v1BaseUrl = _configuration["IntegrationTest:V1BaseUrl"];
             _v2BaseUrl = _configuration["IntegrationTest:V2BaseUrl"];
-            _testCasesFile = _configuration["IntegrationTest:TestCasesFile"];
+            _testCasesFile = _configuration["IntegrationTest:TestCasesFile"] ?? "TestData/test-cases.json";
             _artifactsFolder = _configuration["IntegrationTest:ArtifactsFolder"] ?? "artifacts";
 
-            // Initialize HTTP client
             _httpClient = new HttpClient
             {
                 Timeout = TimeSpan.FromMinutes(5)
             };
+
+            // Initialize services (using real implementations to test the actual service)
+            _testCaseGenerator = new TestCaseGenerator();
+            var envelopeBuilder = new ApiCallEnvelopeBuilder();
+            var httpClientFactory = new TestHttpClientFactory(_httpClient);
+            var logger = new TestLogger<ComparisonService>();
+            
+            // Create ComparisonService with all dependencies
+            _comparisonService = new ComparisonService(
+                _configuration,
+                logger,
+                httpClientFactory,
+                _testCaseGenerator,
+                envelopeBuilder);
         }
 
         [Fact]
@@ -70,22 +94,21 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             Console.WriteLine($"   V2 Base URL: {_v2BaseUrl}");
             Console.WriteLine();
 
-            // Load test cases
-            var testCases = LoadTestCases();
-            Console.WriteLine($"📋 Loaded {testCases.Count} test cases");
+            // Load test data and build comparison request
+            var request = BuildComparisonRequest();
+            Console.WriteLine($"📋 Loaded {request.Properties.Count} properties with test cases");
 
-            // Process each test case
-            var results = new List<TestCaseResult>();
+            // Execute comparison using ComparisonService (reuses all the service logic!)
+            var response = await _comparisonService.ExecuteComparisonAsync(request);
+            var results = response.Results;
+
+            // Display progress
             int currentCase = 0;
-
-            foreach (var testCase in testCases)
+            foreach (var result in results)
             {
                 currentCase++;
-                Console.WriteLine($"\n[{currentCase}/{testCases.Count}] Property: {testCase.PropertyDescription} (OID={testCase.Oid})");
-                Console.WriteLine($"   Query: {testCase.QueryConfigName}");
-
-                var result = await ProcessTestCase(testCase);
-                results.Add(result);
+                Console.WriteLine($"\n[{currentCase}/{results.Count}] Property: {result.Description} (OID={result.Oid})");
+                Console.WriteLine($"   Query: {result.TestCaseName}");
 
                 if (result.Success)
                 {
@@ -97,7 +120,7 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                 }
                 else
                 {
-                    Console.WriteLine($"   ⚠️ Found {result.Differences.Count} differences");
+                    Console.WriteLine($"   ⚠️ Found {result.Differences?.Count ?? 0} differences");
                 }
             }
 
@@ -128,244 +151,28 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             Console.WriteLine($"\n✅ All {results.Count} test cases passed - V1 and V2 responses are identical!");
         }
 
-        private List<TestCase> LoadTestCases()
+        private ComparisonRequest BuildComparisonRequest()
         {
             var baseDir = AppContext.BaseDirectory;
-            var testCasesPath = Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", _testCasesFile));
+            var testCasesPath = Path.Combine(baseDir, _testCasesFile);
 
-            if (!File.Exists(testCasesPath))
-            {
-                throw new FileNotFoundException($"Test cases file not found: {testCasesPath}");
-            }
-
+            // Load properties from test-cases.json
             var json = File.ReadAllText(testCasesPath);
             var testData = JsonConvert.DeserializeObject<TestData>(json);
 
-            // Generate cartesian product: n properties × m query configurations = n*m test cases
-            var testCases = new List<TestCase>();
-
-            foreach (var property in testData.Properties)
+            // Build request with properties from test data
+            var request = new ComparisonRequest
             {
-                // Always add default test case: today + 1 day, 2 adults
-                testCases.Add(CreateDefaultTestCase(property));
-
-                // Add configured test cases
-                foreach (var queryConfig in testData.QueryConfigurations)
+                Properties = testData.Properties.Select(p => new PropertyTestCase
                 {
-                    // Skip disabled configurations
-                    if (queryConfig.Disabled)
-                        continue;
-
-                    var testCase = new TestCase
-                    {
-                        Oid = property._oid,
-                        Uuid = property._uuid,
-                        PropertyDescription = property.Description ?? property._oid,
-                        QueryConfigName = queryConfig.Name,
-                        QueryParameters = PopulateDatesIfNeeded(queryConfig.Parameters)
-                    };
-                    
-                    testCases.Add(testCase);
-                }
-            }
-
-            return testCases;
-        }
-
-        private TestCase CreateDefaultTestCase(PropertyInfo property)
-        {
-            var today = DateTime.Today;
-            var tomorrow = today.AddDays(1);
-
-            return new TestCase
-            {
-                Oid = property._oid,
-                Uuid = property._uuid,
-                PropertyDescription = property.Description ?? property._oid,
-                QueryConfigName = "Default: Today+1, 2 Adults",
-                QueryParameters = new QueryParametersDto
-                {
-                    BuildLevel = "Primary",
-                    From = today.ToString("yyyy-MM-dd"),
-                    Until = tomorrow.ToString("yyyy-MM-dd"),
-                    Los = 1,
-                    Occupancy = new List<string> { "a,a" },
-                    OutputMode = "Availability",
-                    SessionId = Guid.NewGuid().ToString(),
-                    FilterByProducts = new List<string>(),
-                    FilterByLegacyProducts = new List<string>(),
-                    FilterByLegacyTariffs = new List<string>(),
-                    FilterByTariffs = new List<string>()
-                }
-            };
-        }
-
-        private QueryParametersDto PopulateDatesIfNeeded(QueryParametersDto parameters)
-        {
-            // If From/Until are not provided but Los is, generate random dates
-            if ((string.IsNullOrEmpty(parameters.From) || string.IsNullOrEmpty(parameters.Until)) && parameters.Los > 0)
-            {
-                var random = new Random();
-                var daysFromNow = random.Next(0, 90); // Random date within next 90 days
-                var fromDate = DateTime.Today.AddDays(daysFromNow);
-                var untilDate = fromDate.AddDays(parameters.Los);
-
-                parameters.From = fromDate.ToString("yyyy-MM-dd");
-                parameters.Until = untilDate.ToString("yyyy-MM-dd");
-            }
-
-            return parameters;
-        }
-
-        private async Task<TestCaseResult> ProcessTestCase(TestCase testCase)
-        {
-            var result = new TestCaseResult
-            {
-                Oid = testCase.Oid,
-                Uuid = testCase.Uuid,
-                PropertyDescription = testCase.PropertyDescription,
-                QueryConfigName = testCase.QueryConfigName,
-                From = testCase.QueryParameters?.From,
-                Until = testCase.QueryParameters?.Until,
-                Los = testCase.QueryParameters?.Los ?? 0,
-                ChannelUuid = testCase.Uuid,
-                Differences = new List<Compare.Models.Core.Difference>()
+                    Oid = p._oid,
+                    Uuid = p._uuid,
+                    Description = p.Description ?? p._oid,
+                    UsePreDefinedTestCases = "true" // Use pre-defined test cases from test-cases.json
+                }).ToList()
             };
 
-            try
-            {
-                // Build API call envelope
-                var envelope = BuildApiCallEnvelope(testCase);
-
-                // Call V1 API
-                var v1Response = await CallApi(_v1BaseUrl, envelope);
-                result.V1ResponseJson = v1Response;
-                var v1Data = JsonConvert.DeserializeObject<ApiResult<V1Response>>(v1Response);
-
-                // Call V2 API
-                var v2Response = await CallApi(_v2BaseUrl, envelope);
-                result.V2ResponseJson = v2Response;
-                var v2Data = JsonConvert.DeserializeObject<ApiResult<TOCC.Contracts.IBE.Models.Availability.Response>>(v2Response);
-
-                // Compare responses
-                var comparer = new AvailabilityComparer();
-                ConfigureComparer(comparer);
-
-                bool areEqual = comparer.Compare(v1Data.Value, v2Data.Value);
-                result.Success = areEqual;
-                result.Differences = comparer.Differences.ToList();
-            }
-            catch (Exception ex)
-            {
-                result.Success = false;
-                result.ErrorMessage = $"{ex.GetType().Name}: {ex.Message}";
-            }
-
-            return result;
-        }
-
-        private ApiCallEnvelope BuildApiCallEnvelope(TestCase testCase)
-        {
-            // Use query parameters from test case
-            var queryParamsDto = testCase.QueryParameters;
-
-            // Parse dates
-            DateTime? fromDate = null;
-            DateTime? untilDate = null;
-            
-            if (queryParamsDto.From != null && DateTime.TryParse(queryParamsDto.From, out var parsedFrom))
-                fromDate = parsedFrom;
-            
-            if (queryParamsDto.Until != null && DateTime.TryParse(queryParamsDto.Until, out var parsedUntil))
-                untilDate = parsedUntil;
-
-            // Parse UUID from test case
-            Guid channelUuid = Guid.Parse(testCase.Uuid);
-            Guid? sessionId = null;
-            if (queryParamsDto.SessionId != null && Guid.TryParse(queryParamsDto.SessionId, out var parsedSessionId))
-                sessionId = parsedSessionId;
-
-            // Parse enums
-            Enum.TryParse<BuildLevels>(queryParamsDto.BuildLevel, out var buildLevel);
-            Enum.TryParse<OutputModes>(queryParamsDto.OutputMode, out var outputMode);
-
-            // Build query parameters using the existing QueryParameters class
-            var queryParams = new QueryParameters
-            {
-                BuildLevel = buildLevel,
-                From = fromDate,
-                Until = untilDate,
-                Los = queryParamsDto.Los,
-                Occupancy = queryParamsDto.Occupancy?.ToArray() ?? new string[0],
-                OutputMode = outputMode,
-                Channel_uuid = channelUuid,
-                SessionId = sessionId,
-                FilterByProducts = queryParamsDto.FilterByProducts?.Select(Guid.Parse).ToList() ?? new List<Guid>(),
-                FilterByLegacyProducts = queryParamsDto.FilterByLegacyProducts ?? new List<string>(),
-                FilterByLegacyTariffs = queryParamsDto.FilterByLegacyTariffs ?? new List<string>(),
-                FilterByTariffs = queryParamsDto.FilterByTariffs?.Select(Guid.Parse).ToList() ?? new List<Guid>()
-            };
-
-            return new ApiCallEnvelope
-            {
-                Path = $"ibe/availability/{testCase.Uuid}",
-                Headers = new Dictionary<string, string>
-                {
-                    { "Accept-Language", "en-US" }
-                },
-                Method = "POST",
-                Body = queryParams
-            };
-        }
-
-        private async Task<string> CallApi(string baseUrl, ApiCallEnvelope envelope)
-        {
-            var url = $"{baseUrl.TrimEnd('/')}/api/__api_party/ibe";
-            
-            // Configure JSON serializer to convert enums to strings
-            var settings = new JsonSerializerSettings
-            {
-                Converters = new List<JsonConverter> { new Newtonsoft.Json.Converters.StringEnumConverter() },
-                NullValueHandling = NullValueHandling.Ignore
-            };
-            
-            var jsonBody = JsonConvert.SerializeObject(envelope, settings);
-            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-
-            // Add headers
-            var request = new HttpRequestMessage(HttpMethod.Post, url)
-            {
-                Content = content
-            };
-
-            foreach (var header in envelope.Headers)
-            {
-                request.Headers.TryAddWithoutValidation(header.Key, header.Value);
-            }
-
-            var response = await _httpClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-
-            return await response.Content.ReadAsStringAsync();
-        }
-
-        private void ConfigureComparer(AvailabilityComparer comparer)
-        {
-            // Configure paths to skip during comparison
-            // Note: Array indices and identifiers like [_oid=97936] are automatically removed during comparison
-            comparer.SkipPaths = new List<string>
-            {
-                // Skip specific Ticks properties under Offers
-                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.MinStayThrough",
-                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.MinLos",
-                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsCta",
-                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsCtd",
-                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsMixable",
-                "Result.Properties.Periods.Sets.Products.Ticks.InnerTicks",
-                // Skip cache-related properties
-                "Result.Properties.Periods.CacheSetName",
-                "Result.Properties.Periods.IsFromCache",
-            };
+            return request;
         }
 
         private string SanitizeFileName(string fileName)
@@ -378,7 +185,7 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             return sanitized.Replace(" ", "_").Replace(":", "").Replace("+", "plus");
         }
 
-        private string GenerateArtifact(List<TestCaseResult> results)
+        private string GenerateArtifact(List<ComparisonTestCaseResult> results)
         {
             var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             var baseDir = AppContext.BaseDirectory;
@@ -395,7 +202,7 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             // Generate individual artifact files for each test case
             foreach (var result in results)
             {
-                var sanitizedTestName = SanitizeFileName(result.QueryConfigName);
+                var sanitizedTestName = SanitizeFileName(result.TestCaseName);
                 var individualFileName = $"{timestamp}_oid{result.Oid}_uuid{result.Uuid.Substring(0, 8)}_{sanitizedTestName}.json";
                 var individualFilePath = Path.Combine(artifactsDir, individualFileName);
 
@@ -404,8 +211,8 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                     Timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     Oid = result.Oid,
                     Uuid = result.Uuid,
-                    Property = result.PropertyDescription,
-                    QueryConfiguration = result.QueryConfigName,
+                    Property = result.Description,
+                    QueryConfiguration = result.TestCaseName,
                     QueryParameters = new
                     {
                         result.From,
@@ -454,8 +261,8 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
                 {
                     r.Oid,
                     r.Uuid,
-                    Property = r.PropertyDescription,
-                    QueryConfiguration = r.QueryConfigName,
+                    Property = r.Description,
+                    QueryConfiguration = r.TestCaseName,
                     QueryParameters = new
                     {
                         r.From,

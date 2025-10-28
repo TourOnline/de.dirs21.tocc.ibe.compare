@@ -29,10 +29,27 @@ namespace TOCC.IBE.Compare
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AvailabilityComparer"/> class.
+        /// Configures default skip paths for known differences between V1 and V2 APIs.
         /// </summary>
         public AvailabilityComparer()
         {
             Differences = new List<Difference>();
+            
+            // Configure default paths to skip during comparison
+            // These represent known structural differences between V1 and V2 APIs
+            SkipPaths = new List<string>
+            {
+                // Skip specific Ticks properties under Offers
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.MinStayThrough",
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.MinLos",
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsCta",
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsCtd",
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Ticks.IsMixable",
+                "Result.Properties.Periods.Sets.Products.Ticks.InnerTicks",
+                // Skip cache-related properties
+                "Result.Properties.Periods.CacheSetName",
+                "Result.Properties.Periods.IsFromCache",
+            };
         }
 
         #endregion

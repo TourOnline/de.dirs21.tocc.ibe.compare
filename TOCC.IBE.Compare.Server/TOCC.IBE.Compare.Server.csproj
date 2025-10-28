@@ -20,4 +20,32 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TOCC.IBE.Compare\TOCC.IBE.Compare.csproj" />
+    <ProjectReference Include="..\TOCC.IBE.Compare.Models\TOCC.IBE.Compare.Models.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Copy test-cases.json from common TestData folder at solution level -->
+    <None Include="..\TestData\test-cases.json">
+      <Link>TestData\test-cases.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Only reference essential TOCC DLLs needed by Server -->
+    <!-- Other TOCC DLLs are inherited through TOCC.IBE.Compare project reference -->
+    <Reference Include="TOCC.Core">
+      <HintPath>..\Types\TOCC.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TOCC.Contracts.IBE">
+      <HintPath>..\Types\TOCC.Contracts.IBE.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
 </Project>

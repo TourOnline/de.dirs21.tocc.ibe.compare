@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
@@ -10,9 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Types", "Types", "{02EA681E
 		Types\TOCC.Contracts.Default.dll = Types\TOCC.Contracts.Default.dll
 		Types\TOCC.Contracts.Grid.dll = Types\TOCC.Contracts.Grid.dll
 		Types\TOCC.Contracts.IBE.dll = Types\TOCC.Contracts.IBE.dll
+		Types\TOCC.Contracts.Workers.dll = Types\TOCC.Contracts.Workers.dll
 		Types\TOCC.Core.dll = Types\TOCC.Core.dll
 		Types\TOCC.Core.Enums.dll = Types\TOCC.Core.Enums.dll
 		Types\TOCC.Models.Default.dll = Types\TOCC.Models.Default.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{B7C8D9E0-F1A2-4B3C-9D8E-7F6A5B4C3D2E}"
+	ProjectSection(SolutionItems) = preProject
+		TestData\test-cases.json = TestData\test-cases.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOCC.IBE.Compare.Tests", "TOCC.IBE.Compare.Tests\TOCC.IBE.Compare.Tests.csproj", "{F4FCB8B4-DAF7-1DFB-DDFB-847B8DB16446}"

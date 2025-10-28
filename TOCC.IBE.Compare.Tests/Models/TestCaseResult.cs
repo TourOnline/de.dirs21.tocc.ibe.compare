@@ -21,5 +21,7 @@ namespace TOCC.IBE.Compare.Tests.Models
         public string ErrorMessage { get; set; }
         public string V1ResponseJson { get; set; }
         public string V2ResponseJson { get; set; }
+        public long V1ExecutionTimeMs { get; set; }
+        public long V2ExecutionTimeMs { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace TOCC.IBE.Compare.Models.Core
 {
@@ -8,24 +10,64 @@ namespace TOCC.IBE.Compare.Models.Core
     public class Difference
     {
         /// <summary>
+        /// Gets or sets the type of difference detected.
+        /// </summary>
+        [JsonProperty("Type")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DifferenceType Type { get; set; }
+
+        /// <summary>
         /// Gets the property path where the difference was found.
         /// </summary>
+        [JsonProperty("Path")]
         public string Path { get; }
 
         /// <summary>
-        /// Gets the expected value from V1.
+        /// Gets the expected value from V1 (not serialized to JSON).
         /// </summary>
+        [JsonIgnore]
         public object? Expected { get; }
 
         /// <summary>
-        /// Gets the actual value from V2.
+        /// Gets the actual value from V2 (not serialized to JSON).
         /// </summary>
+        [JsonIgnore]
         public object? Actual { get; }
 
         /// <summary>
-        /// Gets or sets the type of difference detected.
+        /// Gets a simplified string representation of Expected for JSON serialization.
         /// </summary>
-        public DifferenceType Type { get; set; }
+        [JsonProperty("Expected")]
+        public string ExpectedDisplay => FormatValueForDisplay(Expected);
+
+        /// <summary>
+        /// Gets a simplified string representation of Actual for JSON serialization.
+        /// </summary>
+        [JsonProperty("Actual")]
+        public string ActualDisplay => FormatValueForDisplay(Actual);
+
+        /// <summary>
+        /// Formats a value for display, showing type info for complex objects.
+        /// </summary>
+        private static string FormatValueForDisplay(object? value)
+        {
+            if (value == null)
+                return "<null>";
+
+            if (value is string str)
+                return str == string.Empty ? "<empty>" : str;
+
+            // For collections, show count
+            if (value is System.Collections.ICollection collection)
+                return $"[{collection.Count} items]";
+
+            // For other complex types, show type name
+            var type = value.GetType();
+            if (type.IsClass && type != typeof(string))
+                return $"<{type.Name}>";
+
+            return value.ToString() ?? "<missing>";
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Difference"/> class.
