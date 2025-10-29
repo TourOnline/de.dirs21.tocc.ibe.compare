@@ -1,0 +1,82 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: tocc-ibe-compare-pub
+  namespace: default
+spec:
+  selector:
+    app: tocc-ibe-compare
+  type:
+    NodePort
+  ports:
+  - name: public
+    port: 80
+    nodePort: 30052
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tocc-ibe-compare
+  namespace: default
+  labels:
+    app: tocc-compare
+spec:
+  selector:
+    app: tocc-ibe-compare
+  ports:
+  - port: 80
+    protocol: TCP
+    name: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tocc-ibe-compare
+  namespace: default
+  labels:
+    velero: tocc-ibe-compare
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      id: tocc-ibe-compare
+  template:
+    metadata:
+      labels:
+        app: tocc-ibe-compare
+        id: tocc-ibe-compare
+    spec:
+      containers:
+      - name: tocc-ibe-compare
+        image: docker-hub.cloud.touronline.ag/touronline/tocc-ibe-compare:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: ENDPOINT_PURPOSE
+          value: "default"
+        readinessProbe:
+          httpGet:
+            path: /v1/ping
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+          periodSeconds: 15
+        livenessProbe:
+          httpGet:
+            path: /v1/ping
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+          periodSeconds: 15
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              id: tocc-default
