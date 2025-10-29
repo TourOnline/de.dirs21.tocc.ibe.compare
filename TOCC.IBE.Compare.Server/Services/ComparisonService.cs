@@ -227,6 +227,7 @@ namespace TOCC.IBE.Compare.Server.Services
                 var v1Response = await CallApiAsync(_v1BaseUrl, envelope);
                 v1Stopwatch.Stop();
                 result.V1ExecutionTimeMs = v1Stopwatch.ElapsedMilliseconds;
+                result.V1ResponseJson = v1Response; // Store raw JSON for integration test artifacts
                 var v1Data = JsonConvert.DeserializeObject<ApiResult<V1Response>>(v1Response);
                 
                 // Call V2 API and measure only the HTTP call time
@@ -234,6 +235,7 @@ namespace TOCC.IBE.Compare.Server.Services
                 var v2Response = await CallApiAsync(_v2BaseUrl, envelope);
                 v2Stopwatch.Stop();
                 result.V2ExecutionTimeMs = v2Stopwatch.ElapsedMilliseconds;
+                result.V2ResponseJson = v2Response; // Store raw JSON for integration test artifacts
                 var v2Data = JsonConvert.DeserializeObject<ApiResult<TOCC.Contracts.IBE.Models.Availability.Response>>(v2Response);
 
                 // Compare (comparer auto-configures with default skip paths)

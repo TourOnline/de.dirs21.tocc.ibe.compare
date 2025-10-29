@@ -51,7 +51,8 @@ namespace TOCC.IBE.Compare
                 "Result.Properties.Periods.IsFromCache",
                 "Info.Tags",
                 "Result.Properties.Periods.Los",
-                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Tariff_uuid" // no thariff uuid used in one ?  
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Tariff_uuid",
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.TestType" // no thariff uuid used in one ?  
             };
         }
 
@@ -228,7 +229,7 @@ namespace TOCC.IBE.Compare
 
                 if (uniqueIdAttr != null)
                 {
-                    return CompareCollectionsByUniqueId(enumV1, enumV2, path, depth, uniqueIdAttr.PropertyName);
+                    return CompareCollectionsByUniqueId(enumV1, enumV2, path, depth, uniqueIdAttr.PropertyName, propertyInfo);
                 }
                 else
                 {
@@ -447,7 +448,7 @@ namespace TOCC.IBE.Compare
         /// <summary>
         /// Compares collections by matching items using a unique identifier property.
         /// </summary>
-        private bool CompareCollectionsByUniqueId(IEnumerable enumV1, IEnumerable enumV2, string path, int depth, string uniqueIdPropertyName)
+        private bool CompareCollectionsByUniqueId(IEnumerable enumV1, IEnumerable enumV2, string path, int depth, string uniqueIdPropertyName, PropertyInfo collectionProperty = null)
         {
             var listV1 = enumV1.Cast<object>().ToList();
             var listV2 = enumV2.Cast<object>().ToList();
@@ -505,6 +506,23 @@ namespace TOCC.IBE.Compare
                 }
 
                 var itemPath = $"{path}[{uniqueIdPropertyName}={idValue}]";
+                
+                // Check for CustomCompareAttribute on the collection property
+                if (collectionProperty != null)
+                {
+                    var customCompareAttr = collectionProperty.GetCustomAttribute<CustomCompareAttribute>(true);
+                    if (customCompareAttr != null)
+                    {
+                        var customComparer = CreateCustomComparer(customCompareAttr);
+                        if (customComparer != null)
+                        {
+                            customComparer.Compare(item1, item2, itemPath, Differences);
+                            dict2.Remove(idValue);
+                            continue;
+                        }
+                    }
+                }
+                
                 CompareValues(item1, item2, itemPath, depth + 1);
 
                 dict2.Remove(idValue);
