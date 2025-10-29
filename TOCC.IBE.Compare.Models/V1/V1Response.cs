@@ -76,7 +76,7 @@ namespace TOCC.IBE.Compare.Models.V1
 
         [CustomCompare(typeof(OfferTickComparer))]
         public List<OfferTicks> Ticks { set; get; }
-        public ValidatedSetTypes Type { get; }
+        public ValidatedSetTypes Type { get; set; }
 
         public class BaseOfferDiscount
         {
