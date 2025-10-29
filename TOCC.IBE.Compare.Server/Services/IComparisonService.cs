@@ -14,7 +14,8 @@ namespace TOCC.IBE.Compare.Server.Services
         /// Executes comparison for the given request.
         /// </summary>
         /// <param name="request">Comparison request containing properties and test cases</param>
+        /// <param name="includeExplanations">If true, includes business-friendly explanations for differences</param>
         /// <returns>Comparison response with results</returns>
-        Task<ComparisonResponse> ExecuteComparisonAsync(ComparisonRequest request);
+        Task<ComparisonResponse> ExecuteComparisonAsync(ComparisonRequest request, bool includeExplanations = false);
     }
 }

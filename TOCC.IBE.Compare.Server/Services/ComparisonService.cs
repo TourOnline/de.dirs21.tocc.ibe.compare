@@ -15,6 +15,7 @@ using TOCC.IBE.Compare.Models.Common;
 using TOCC.IBE.Compare.Models.Core;
 using TOCC.IBE.Compare.Models.V1;
 using TOCC.IBE.Compare.Models.Services;
+using static TOCC.IBE.Compare.Models.Services.BusinessFriendlyMapper;
 using TOCC.IBE.Compare.Server.Models;
 using TOCC.IBE.Compare.Server.Infrastructure;
 using ComparisonRequest = TOCC.IBE.Compare.Models.Common.ComparisonRequest;
@@ -65,9 +66,9 @@ namespace TOCC.IBE.Compare.Server.Services
         /// <summary>
         /// Executes comparison for the given request.
         /// </summary>
-        public async Task<ComparisonResponse> ExecuteComparisonAsync(ComparisonRequest request)
+        public async Task<ComparisonResponse> ExecuteComparisonAsync(ComparisonRequest request, bool includeExplanations = false)
         {
-            var stopwatch = Stopwatch.StartNew();
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
             var response = new ComparisonResponse
             {
                 Success = true,
@@ -94,7 +95,7 @@ namespace TOCC.IBE.Compare.Server.Services
                         _logger.LogInformation("Processing property {Oid} - test case {Name} ({Index}/{Total})", 
                             property.Oid, testCase.Name, i + 1, testCases.Count);
 
-                        var result = await CompareTestCaseAsync(property, testCase);
+                        var result = await CompareTestCaseAsync(property, testCase, includeExplanations);
                         response.Results.Add(result);
 
                         if (result.Success)
@@ -263,7 +264,8 @@ namespace TOCC.IBE.Compare.Server.Services
         /// </summary>
         private async Task<ComparisonTestCaseResult> CompareTestCaseAsync(
             PropertyTestCase property, 
-            TestCaseWithName testCase)
+            TestCaseWithName testCase,
+            bool includeExplanations)
         {
             var parameters = testCase.Parameters;
             var result = new ComparisonTestCaseResult
@@ -327,6 +329,15 @@ namespace TOCC.IBE.Compare.Server.Services
                 {
                     // Use the Difference objects directly - they already have the correct format
                     result.Differences = comparer.Differences;
+                    
+                    // Generate business-friendly differences only if requested (via explain=true)
+                    if (includeExplanations)
+                    {
+                        result.BusinessFriendlyDifferences = comparer.Differences
+                            .Select(d => BusinessFriendlyMapper.MapToBusinessFriendly(d))
+                            .OrderByDescending(d => d.Severity) // Critical first
+                            .ToList();
+                    }
                 }
             }
             catch (Exception ex)

@@ -51,6 +51,9 @@ namespace TOCC.IBE.Compare.Models.Core
         [JsonProperty("differences")]
         public List<Difference>? Differences { get; set; }
 
+        [JsonProperty("businessFriendlyDifferences")]
+        public List<BusinessFriendlyDifference>? BusinessFriendlyDifferences { get; set; }
+
         [JsonProperty("v1ExecutionTimeMs")]
         public long V1ExecutionTimeMs { get; set; }
 

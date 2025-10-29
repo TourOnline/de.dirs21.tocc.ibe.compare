@@ -36,9 +36,11 @@ namespace TOCC.IBE.Compare.Server.Controllers
 
         /// <summary>
         /// Executes comparison tests for the provided properties and test cases.
+        /// Use ?explain=true query parameter to include business-friendly explanations for non-technical users.
         /// </summary>
         /// <param name="request">Comparison request containing properties and test cases</param>
-        /// <returns>Comparison results summary</returns>
+        /// <param name="explain">If true, includes business-friendly explanations for differences (default: false)</param>
+        /// <returns>Comparison results summary with optional business-friendly differences</returns>
         /// <response code="200">Comparison completed successfully</response>
         /// <response code="400">Invalid request or validation errors</response>
         /// <response code="500">Internal server error during comparison</response>
@@ -47,7 +49,8 @@ namespace TOCC.IBE.Compare.Server.Controllers
         [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<ComparisonResponse>> ExecuteComparison(
-            [FromBody] ComparisonRequest request)
+            [FromBody] ComparisonRequest request,
+            [FromQuery] bool explain = false)
         {
             try
             {
@@ -67,8 +70,8 @@ namespace TOCC.IBE.Compare.Server.Controllers
                     });
                 }
 
-                // Execute comparison
-                var response = await _comparisonService.ExecuteComparisonAsync(request!);
+                // Execute comparison with optional explanations
+                var response = await _comparisonService.ExecuteComparisonAsync(request!, explain);
 
                 _logger.LogInformation("Comparison completed: {Success}/{Total} successful",
                     response.SuccessfulComparisons, response.TotalTestCases);

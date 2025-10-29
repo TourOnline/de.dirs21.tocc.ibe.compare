@@ -98,8 +98,9 @@ namespace TOCC.IBE.Compare.Tests.IntegrationTests
             var request = BuildComparisonRequest();
             Console.WriteLine($"📋 Loaded {request.Properties.Count} properties with test cases");
 
-            // Execute comparison using ComparisonService (reuses all the service logic!)
-            var response = await _comparisonService.ExecuteComparisonAsync(request);
+            // Execute comparison using ComparisonService with explanations enabled
+            // (reuses all the service logic including business-friendly mapping!)
+            var response = await _comparisonService.ExecuteComparisonAsync(request, includeExplanations: true);
             var results = response.Results;
 
             // Display progress
