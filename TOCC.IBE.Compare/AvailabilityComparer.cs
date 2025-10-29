@@ -52,7 +52,18 @@ namespace TOCC.IBE.Compare
                 "Info.Tags",
                 "Result.Properties.Periods.Los",
                 "Result.Properties.Periods.Sets.Products.Ticks.Offers.Tariff_uuid",
-                "Result.Properties.Periods.Sets.Products.Ticks.Offers.TestType" // no thariff uuid used in one ?  
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.TestType", // no thariff uuid used in one ?  
+                "AlternativeQueries.AllowCache",
+                "AlternativeQueries.Explain",
+                "AlternativeQueries.ShouldLoadInfo",
+                "AlternativeQueries.IsAvailabilityForSingleProperty",
+                "AlternativeQueries.WithServerValidation",
+                "AlternativeQueries.Type",
+                "AlternativeQueries.ShouldLoadInfo",
+                "AlternativeQueries.IsAvailabilityForSingleProperty",
+                "AlternativeQueries.WithServerValidation",
+                "AlternativeQueries.Type"
+
             };
         }
 

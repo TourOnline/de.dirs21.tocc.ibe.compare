@@ -30,6 +30,8 @@ namespace TOCC.IBE.Compare.Models.V1
 
         [SkipValidation]
         public object IgnoreSteps { set; get; }
+
+        public List<QueryParameters> AlternativeQueries { set; get; }
     }
 
     public class MainTariffInfo
