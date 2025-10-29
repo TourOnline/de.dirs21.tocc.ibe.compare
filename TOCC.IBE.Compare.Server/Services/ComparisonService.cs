@@ -158,12 +158,6 @@ namespace TOCC.IBE.Compare.Server.Services
                 LoadQueryConfigurations();
             }
 
-            // If no configurations loaded, fall back to simple random generation
-            if (_queryConfigurations == null || _queryConfigurations.Count == 0)
-            {
-                _logger.LogWarning("No query configurations found in {TestCasesFile}, using fallback random generation", _testCasesFile);
-                return GenerateFallbackTestCase(property);
-            }
 
             // Use shared TestCaseGenerator - same logic as AvailabilityIntegrationTests
             // includeDefaultTestCase: true ensures we always test the default case (today+1, 2 adults)
@@ -201,65 +195,6 @@ namespace TOCC.IBE.Compare.Server.Services
         }
 
         /// <summary>
-        /// Generates a fallback test case when query configurations are not available.
-        /// </summary>
-        private List<TestCaseWithName> GenerateFallbackTestCase(PropertyTestCase property)
-        {
-            var random = new Random();
-            var tomorrow = DateTime.UtcNow.AddDays(1);
-            var from = tomorrow.AddDays(random.Next(0, 30));
-            var los = random.Next(1, 8);
-            var until = from.AddDays(los);
-
-            var occupancies = new List<List<string>>
-            {
-                new List<string> { "a,a" },                    // 2 adults
-                new List<string> { "a,a,5" },                  // 2 adults + 1 child (5 years)
-                new List<string> { "a,a,10,8" },               // 2 adults + 2 children
-                new List<string> { "a,a", "a,a" },             // 2 rooms, 2 adults each
-                new List<string> { "a,a,5", "a,a" }            // 2 rooms, mixed
-            };
-
-            var selectedOccupancy = occupancies[random.Next(occupancies.Count)];
-
-            return new List<TestCaseWithName>
-            {
-                new TestCaseWithName
-                {
-                    Name = "Fallback Random Test Case",
-                    Parameters = new TestCaseParameters
-                    {
-                        Occupancy = selectedOccupancy,
-                        BuildLevel = "Primary",
-                        From = from.ToString("yyyy-MM-dd"),
-                        Until = until.ToString("yyyy-MM-dd"),
-                        Los = los,
-                        UnitUuid = new List<string>(),
-                        OutputMode = "Availability",
-                        ChannelUuid = property.Uuid,
-                        FilterByProducts = new List<string>(),
-                        FilterByLegacyProducts = new List<string>(),
-                        FilterByLegacyTariffs = new List<string>(),
-                        FilterByTariffs = new List<string>()
-                    }
-                }
-            };
-        }
-
-
-        /// <summary>
-        /// Generates a human-readable test case name.
-        /// </summary>
-        private string GenerateTestCaseName(TestCaseParameters testCase, int index)
-        {
-            var occupancyDesc = testCase.Occupancy != null && testCase.Occupancy.Count > 0
-                ? string.Join(", ", testCase.Occupancy)
-                : "Unknown";
-            
-            return $"{testCase.Los} night(s) - {occupancyDesc} - {testCase.From} to {testCase.Until}";
-        }
-
-        /// <summary>
         /// Compares a single test case between V1 and V2 APIs.
         /// </summary>
         private async Task<ComparisonTestCaseResult> CompareTestCaseAsync(
@@ -286,37 +221,20 @@ namespace TOCC.IBE.Compare.Server.Services
                 // Build API call envelope
                 var envelope = BuildApiCallEnvelope(property.Uuid, testCase);
 
-                // Configure JSON serializer to handle missing types and assemblies gracefully
-                var jsonSettings = new JsonSerializerSettings
-                {
-                    TypeNameHandling = TypeNameHandling.None,
-                    MissingMemberHandling = MissingMemberHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore,
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                    SerializationBinder = new SafeSerializationBinder(), // Handle missing assemblies during type resolution
-                    Error = (sender, args) =>
-                    {
-                        // Handle all deserialization errors gracefully
-                        var errorType = args.ErrorContext.Error.GetType().Name;
-                        _logger.LogWarning("JSON deserialization {ErrorType}: {Error}", 
-                            errorType, args.ErrorContext.Error.Message);
-                        args.ErrorContext.Handled = true;
-                    }
-                };
-
+             
                 // Call V1 API and measure only the HTTP call time
                 var v1Stopwatch = Stopwatch.StartNew();
                 var v1Response = await CallApiAsync(_v1BaseUrl, envelope);
                 v1Stopwatch.Stop();
                 result.V1ExecutionTimeMs = v1Stopwatch.ElapsedMilliseconds;
-                var v1Data = JsonConvert.DeserializeObject<ApiResult<V1Response>>(v1Response, jsonSettings);
+                var v1Data = JsonConvert.DeserializeObject<ApiResult<V1Response>>(v1Response);
                 
                 // Call V2 API and measure only the HTTP call time
                 var v2Stopwatch = Stopwatch.StartNew();
                 var v2Response = await CallApiAsync(_v2BaseUrl, envelope);
                 v2Stopwatch.Stop();
                 result.V2ExecutionTimeMs = v2Stopwatch.ElapsedMilliseconds;
-                var v2Data = JsonConvert.DeserializeObject<ApiResult<TOCC.Contracts.IBE.Models.Availability.Response>>(v2Response, jsonSettings);
+                var v2Data = JsonConvert.DeserializeObject<ApiResult<TOCC.Contracts.IBE.Models.Availability.Response>>(v2Response);
 
                 // Compare (comparer auto-configures with default skip paths)
                 var comparer = new AvailabilityComparer();

@@ -49,6 +49,9 @@ namespace TOCC.IBE.Compare
                 // Skip cache-related properties
                 "Result.Properties.Periods.CacheSetName",
                 "Result.Properties.Periods.IsFromCache",
+                "Info.Tags",
+                "Result.Properties.Periods.Los",
+                "Result.Properties.Periods.Sets.Products.Ticks.Offers.Tariff_uuid" // no thariff uuid used in one ?  
             };
         }
 

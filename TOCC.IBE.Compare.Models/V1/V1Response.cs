@@ -45,6 +45,8 @@ namespace TOCC.IBE.Compare.Models.V1
         public Guid? CancellationTerms_uuid { set; get; }
         public int? Capacity { set; get; }
         public ConstraintsInfo Constraints { set; get; }
+
+        [SkipValidation]
         public BaseOfferDiscount Discount { set; get; }
         public BaseOfferFacts Facts { set; get; }
         public Guid? GuaranteePaymentTerms_uuid { set; get; }
@@ -57,6 +59,7 @@ namespace TOCC.IBE.Compare.Models.V1
 
         [SkipValidation]
         public MainTariffInfo MainTariff { set; get; }
+
         public Guid MainTariff_uuid { set; get; }
 
         [SkipValidation]

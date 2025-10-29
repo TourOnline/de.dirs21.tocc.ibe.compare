@@ -41,6 +41,7 @@ namespace TOCC.IBE.Compare.Models.V1
             public DateTime From { get; set; }
             public int Los { set; get; }
 
+            [UniqueIdentifier("MainTariff_uuid")]
             public List<BaseOffer> Offers { get; set; }
 
             public DateTime Until { get; set; }
