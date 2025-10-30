@@ -14,8 +14,6 @@ The TOCC IBE Compare API allows you to compare responses between V1 and V2 avail
 http://172.16.0.14:30052/api/comparison
 ```
 
-> **Note**: Replace `localhost:5000` with your actual server URL and port.
-
 ## Main Comparison Endpoint
 
 ### Execute Comparison
