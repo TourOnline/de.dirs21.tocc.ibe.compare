@@ -101,7 +101,7 @@ namespace TOCC.IBE.Compare.Models.V1
             public BaseOfferFactsCancellation Cancellation { set; get; }
             public List<CustomFact> Custom { get; set; }
             public BaseOfferFactsGuaranteePayment GuaranteePayment { set; get; }
-            [UniqueIdentifier("_uuid")]
+            [UniqueIdentifier("Value")]
             public IList<BaseOfferFactsIncludedServices> IncludedServices { set; get; }
             public bool? IsExemptFromCancellationFees { set; get; }
             public bool? IsFree { set; get; }
