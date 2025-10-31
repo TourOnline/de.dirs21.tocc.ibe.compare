@@ -109,6 +109,19 @@ namespace TOCC.IBE.Compare
             Differences.Clear();
             _propertyCache.Clear();
             _propertyLookupCache.Clear();
+            // Build product and tariff name lookups from both V1 and V2 responses for friendly paths
+            try
+            {
+                NameLookup.Clear();
+                var productNames = BuildProductNameLookup(responseV1, responseV2);
+                var tariffNames = BuildTariffNameLookup(responseV1, responseV2);
+                NameLookup.SetProducts(productNames);
+                NameLookup.SetTariffs(tariffNames);
+            }
+            catch
+            {
+                // Ignore lookup building errors and continue comparison
+            }
             CompareObjects(responseV1, responseV2, responseV1?.GetType(), responseV2?.GetType(), string.Empty, 0);
             return Differences.Count == 0;
         }
@@ -516,7 +529,8 @@ namespace TOCC.IBE.Compare
                     continue;
                 }
 
-                var itemPath = $"{path}[{uniqueIdPropertyName}={idValue}]";
+                // Build path with name if available
+                var itemPath = BuildPathWithName(path, uniqueIdPropertyName, idValue, item1);
                 
                 // Check for CustomCompareAttribute on the collection property
                 if (collectionProperty != null)
@@ -629,6 +643,24 @@ namespace TOCC.IBE.Compare
                     var idValue = specifiedProp.GetValue(item);
                     if (idValue != null && !IsDefaultValue(idValue))
                     {
+                        // Append tariff name when matching tariff identifiers (Tariff_uuid or MainTariff_uuid)
+                        if (specifiedProp.Name.IndexOf("Tariff_uuid", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                            specifiedProp.Name.Equals("MainTariff_uuid", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Guid? g = idValue is Guid gg ? gg : idValue as Guid?;
+                            var name = NameLookup.GetTariffName(g);
+                            // Fallback: try to get name from item's Name property
+                            if (string.IsNullOrWhiteSpace(name))
+                            {
+                                var nameProp = itemType.GetProperty("Name", BindingFlags.Public | BindingFlags.Instance);
+                                if (nameProp != null)
+                                {
+                                    name = nameProp.GetValue(item) as string;
+                                }
+                            }
+                            if (!string.IsNullOrWhiteSpace(name))
+                                return $"{basePath}[{specifiedProp.Name}={idValue}({name})]";
+                        }
                         return $"{basePath}[{specifiedProp.Name}={idValue}]";
                     }
                 }
@@ -683,6 +715,25 @@ namespace TOCC.IBE.Compare
                         continue;
                     
                     // Found a valid identifier!
+                    // If this is a product UUID, append product name
+                    if (prop.Name.Equals("_uuid", StringComparison.OrdinalIgnoreCase) &&
+                        (basePath.EndsWith(".Products", StringComparison.OrdinalIgnoreCase) || basePath.Contains(".Products.", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        Guid? g = idValue is Guid gg ? gg : idValue as Guid?;
+                        var name = NameLookup.GetProductName(g);
+                        // Fallback: try to get name from item's Name property
+                        if (string.IsNullOrWhiteSpace(name))
+                        {
+                            var nameProp = properties.FirstOrDefault(p => p.Name.Equals("Name", StringComparison.OrdinalIgnoreCase));
+                            if (nameProp != null)
+                            {
+                                name = nameProp.GetValue(item) as string;
+                            }
+                        }
+                        if (!string.IsNullOrWhiteSpace(name))
+                            return $"{basePath}[{prop.Name}={idValue}({name})]";
+                    }
+
                     return $"{basePath}[{prop.Name}={idValue}]";
                 }
                 catch
@@ -694,6 +745,59 @@ namespace TOCC.IBE.Compare
 
             // Fallback to index
             return $"{basePath}[{index}]";
+        }
+
+        /// <summary>
+        /// Builds a path with name appended if available (for products and tariffs).
+        /// </summary>
+        private string BuildPathWithName(string basePath, string uniqueIdPropertyName, object idValue, object item)
+        {
+            string name = null;
+            
+            // Check if this is a product UUID
+            if (uniqueIdPropertyName.Equals("_uuid", StringComparison.OrdinalIgnoreCase) &&
+                (basePath.EndsWith(".Products", StringComparison.OrdinalIgnoreCase) || basePath.Contains(".Products.", StringComparison.OrdinalIgnoreCase)))
+            {
+                Guid? g = idValue is Guid gg ? gg : idValue as Guid?;
+                name = NameLookup.GetProductName(g);
+                // Fallback: try to get name from item's Name property
+                if (string.IsNullOrWhiteSpace(name) && item != null)
+                {
+                    var itemType = item.GetType();
+                    var nameProp = itemType.GetProperty("Name", BindingFlags.Public | BindingFlags.Instance);
+                    if (nameProp != null)
+                    {
+                        name = nameProp.GetValue(item) as string;
+                    }
+                }
+            }
+            // Check if this is a tariff UUID (MainTariff_uuid or Tariff_uuid)
+            else if (uniqueIdPropertyName.IndexOf("Tariff_uuid", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                     uniqueIdPropertyName.Equals("MainTariff_uuid", StringComparison.OrdinalIgnoreCase))
+            {
+                Guid? g = idValue is Guid gg ? gg : idValue as Guid?;
+                name = NameLookup.GetTariffName(g);
+                // Fallback: try to get name from item's Name property
+                if (string.IsNullOrWhiteSpace(name) && item != null)
+                {
+                    var itemType = item.GetType();
+                    var nameProp = itemType.GetProperty("Name", BindingFlags.Public | BindingFlags.Instance);
+                    if (nameProp != null)
+                    {
+                        name = nameProp.GetValue(item) as string;
+                    }
+                }
+            }
+            
+            // Build path with or without name
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                return $"{basePath}[{uniqueIdPropertyName}={idValue}({name})]";
+            }
+            else
+            {
+                return $"{basePath}[{uniqueIdPropertyName}={idValue}]";
+            }
         }
 
         /// <summary>
@@ -773,6 +877,104 @@ namespace TOCC.IBE.Compare
                 _propertyLookupCache[type] = lookup;
             }
             return lookup;
+        }
+
+        /// <summary>
+        /// Builds a lookup of Product UUID -> Name from both V1 and V2 Info.Products, unique by _uuid.
+        /// Combines products from both responses to ensure all product names are available.
+        /// </summary>
+        private IDictionary<Guid, string> BuildProductNameLookup(V1Response responseV1, Response responseV2)
+        {
+            var dict = new Dictionary<Guid, string>();
+            
+            // Add products from V1 Info
+            if (responseV1?.Info?.Products != null)
+            {
+                foreach (var kv in responseV1.Info.Products)
+                {
+                    var vm = kv.Value;
+                    var uuid = kv.Key;
+                    var name = vm?.Content?.Name;
+                    if (!dict.ContainsKey(uuid) && !string.IsNullOrWhiteSpace(name))
+                    {
+                        dict[uuid] = name;
+                    }
+                }
+            }
+            
+            // Add products from V2 Info (if V2 has Info.Products with similar structure)
+            if (responseV2?.Info?.Products != null)
+            {
+                foreach (var kv in responseV2.Info.Products)
+                {
+                    var uuid = kv.Key;
+                    var vm = kv.Value;
+                    // V2 Product structure: direct property access
+                    var productUuid = vm?._uuid;
+                    var name = vm?.Content?.Name;
+                    
+                    if (productUuid.HasValue && !dict.ContainsKey(productUuid.Value) && !string.IsNullOrWhiteSpace(name))
+                    {
+                        dict[productUuid.Value] = name;
+                    }
+                    // Fallback: use key if it's the UUID
+                    else if (!dict.ContainsKey(uuid) && !string.IsNullOrWhiteSpace(name))
+                    {
+                        dict[uuid] = name;
+                    }
+                }
+            }
+            
+            return dict;
+        }
+
+        /// <summary>
+        /// Builds a lookup of Tariff UUID -> Name from both V1 and V2 Info.Tariffs, unique by _uuid.
+        /// Combines tariffs from both responses to ensure all tariff names are available.
+        /// </summary>
+        private IDictionary<Guid, string> BuildTariffNameLookup(V1Response responseV1, Response responseV2)
+        {
+            var dict = new Dictionary<Guid, string>();
+            
+            // Add tariffs from V1 Info
+            if (responseV1?.Info?.Tariffs != null)
+            {
+                foreach (var kv in responseV1.Info.Tariffs)
+                {
+                    var vm = kv.Value;
+                    var uuid = kv.Key;
+                    var name = vm?.Content?.Name;
+                    if (uuid != Guid.Empty && !dict.ContainsKey(uuid) && !string.IsNullOrWhiteSpace(name))
+                    {
+                        dict[uuid] = name;
+                    }
+                }
+            }
+            
+            // Add tariffs from V2 Info (if V2 has Info.Tariffs with similar structure)
+            if (responseV2?.Info?.Tariffs != null)
+            {
+                foreach (var kv in responseV2.Info.Tariffs)
+                {
+                    var uuid = kv.Key;
+                    var vm = kv.Value;
+                    // V2 Tariff structure: direct property access
+                    var tariffUuid = vm?._uuid;
+                    var name = vm?.Content?.Name;
+                    
+                    if (tariffUuid.HasValue && tariffUuid.Value != Guid.Empty && !dict.ContainsKey(tariffUuid.Value) && !string.IsNullOrWhiteSpace(name))
+                    {
+                        dict[tariffUuid.Value] = name;
+                    }
+                    // Fallback: use key if it's the UUID
+                    else if (uuid != Guid.Empty && !dict.ContainsKey(uuid) && !string.IsNullOrWhiteSpace(name))
+                    {
+                        dict[uuid] = name;
+                    }
+                }
+            }
+            
+            return dict;
         }
 
         #endregion

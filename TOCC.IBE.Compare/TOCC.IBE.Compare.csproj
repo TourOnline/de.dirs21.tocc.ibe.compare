@@ -32,6 +32,10 @@
       <HintPath>..\Types\TOCC.Core.Enums.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="TOCC.Contracts.NotificationCenter">
+      <HintPath>..\Types\TOCC.Contracts.NotificationCenter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
 
 
