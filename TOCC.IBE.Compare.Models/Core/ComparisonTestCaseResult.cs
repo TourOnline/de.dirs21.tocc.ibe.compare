@@ -60,11 +60,20 @@ namespace TOCC.IBE.Compare.Models.Core
         [JsonProperty("v2ExecutionTimeMs")]
         public long V2ExecutionTimeMs { get; set; }
 
+        [JsonProperty("v1Url")]
+        public string? V1Url { get; set; }
+
+        [JsonProperty("v2Url")]
+        public string? V2Url { get; set; }
+
         // Additional properties for integration tests (not serialized to API)
         [JsonIgnore]
         public string? V1ResponseJson { get; set; }
 
         [JsonIgnore]
         public string? V2ResponseJson { get; set; }
+
+        [JsonIgnore]
+        public string? Directory { get; set; }
     }
 }

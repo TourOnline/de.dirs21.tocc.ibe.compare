@@ -32,6 +32,9 @@ namespace TOCC.IBE.Compare.Server.Models
 
         [JsonProperty("summary")]
         public ComparisonSummary Summary { get; set; } = new();
+
+        [JsonProperty("properties")]
+        public List<PropertyUrlSummary> Properties { get; set; } = new();
     }
 
     /// <summary>
@@ -53,5 +56,23 @@ namespace TOCC.IBE.Compare.Server.Models
 
         [JsonProperty("timestamp")]
         public string Timestamp { get; set; } = string.Empty;
+    }
+
+    public class PropertyUrlSummary
+    {
+        [JsonProperty("oid")]
+        public string Oid { get; set; } = string.Empty;
+
+        [JsonProperty("uuid")]
+        public string Uuid { get; set; } = string.Empty;
+
+        [JsonProperty("directory")]
+        public string? Directory { get; set; }
+
+        [JsonProperty("v1Url")]
+        public string? V1Url { get; set; }
+
+        [JsonProperty("v2Url")]
+        public string? V2Url { get; set; }
     }
 }

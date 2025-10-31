@@ -38,6 +38,7 @@ namespace TOCC.IBE.Compare.Server.Services
         private readonly IApiCallEnvelopeBuilder _envelopeBuilder;
         private readonly string _v1BaseUrl;
         private readonly string _v2BaseUrl;
+        private readonly string _frontendRoute;
         private readonly string _testCasesFile;
         private List<QueryConfiguration>? _queryConfigurations;
 
@@ -60,6 +61,7 @@ namespace TOCC.IBE.Compare.Server.Services
                 ?? throw new InvalidOperationException("IntegrationTest:V1BaseUrl not configured");
             _v2BaseUrl = _configuration["IntegrationTest:V2BaseUrl"] 
                 ?? throw new InvalidOperationException("IntegrationTest:V2BaseUrl not configured");
+            _frontendRoute = _configuration["IntegrationTest:FrontendRoute"] ?? "result";
             _testCasesFile = _configuration["IntegrationTest:TestCasesFile"] ?? "TestData/test-cases.json";
         }
 
@@ -84,6 +86,8 @@ namespace TOCC.IBE.Compare.Server.Services
             {
                 _logger.LogInformation("Starting comparison for {PropertyCount} properties", request.Properties.Count);
 
+                var propertySummaries = new Dictionary<string, PropertyUrlSummary>();
+
                 foreach (var property in request.Properties)
                 {
                     var testCases = GetTestCasesForProperty(property);
@@ -97,6 +101,23 @@ namespace TOCC.IBE.Compare.Server.Services
 
                         var result = await CompareTestCaseAsync(property, testCase, includeExplanations);
                         response.Results.Add(result);
+
+                        // Maintain property-level URL summary when directory becomes available
+                        if (!string.IsNullOrWhiteSpace(result.Directory))
+                        {
+                            if (!propertySummaries.TryGetValue(property.Oid, out var summary))
+                            {
+                                summary = new PropertyUrlSummary
+                                {
+                                    Oid = property.Oid,
+                                    Uuid = property.Uuid,
+                                    Directory = result.Directory,
+                                    V1Url = BuildPropertyUrl(_v1BaseUrl, result.Directory!),
+                                    V2Url = BuildPropertyUrl(_v2BaseUrl, result.Directory!)
+                                };
+                                propertySummaries[property.Oid] = summary;
+                            }
+                        }
 
                         if (result.Success)
                         {
@@ -119,6 +140,9 @@ namespace TOCC.IBE.Compare.Server.Services
                 response.Summary.SuccessRate = response.TotalTestCases > 0
                     ? (double)response.SuccessfulComparisons / response.TotalTestCases * 100
                     : 0;
+
+                // Set properties list on response
+                response.Properties = propertySummaries.Values.ToList();
 
                 _logger.LogInformation("Comparison completed: {Success}/{Total} successful, {Failed} failed, {Errors} errors",
                     response.SuccessfulComparisons, response.TotalTestCases, response.FailedComparisons, response.Errors);
@@ -229,6 +253,13 @@ namespace TOCC.IBE.Compare.Server.Services
                 result.V1ExecutionTimeMs = v1Stopwatch.ElapsedMilliseconds;
                 result.V1ResponseJson = v1Response; // Store raw JSON for integration test artifacts
                 var v1Data = JsonConvert.DeserializeObject<ApiResult<V1Response>>(v1Response);
+                var directory = v1Data?.Value?.Result?.Properties?.FirstOrDefault()?.Directory;
+                result.Directory = directory;
+                if (!string.IsNullOrWhiteSpace(directory))
+                {
+                    result.V1Url = BuildTestCaseUrl(_v1BaseUrl, directory!, parameters);
+                    result.V2Url = BuildTestCaseUrl(_v2BaseUrl, directory!, parameters);
+                }
                 
                 // Call V2 API and measure only the HTTP call time
                 var v2Stopwatch = Stopwatch.StartNew();
@@ -312,6 +343,49 @@ namespace TOCC.IBE.Compare.Server.Services
             response.EnsureSuccessStatusCode();
 
             return await response.Content.ReadAsStringAsync();
+        }
+
+        private string BuildPropertyUrl(string baseUrl, string directory)
+        {
+            var path = $"{baseUrl.TrimEnd('/')}/{directory.Trim('/')}/{_frontendRoute.Trim('/')}";
+            return path;
+        }
+
+        private string BuildTestCaseUrl(string baseUrl, string directory, TestCaseParameters p)
+        {
+            var path = BuildPropertyUrl(baseUrl, directory);
+            var range = $"{p.From},{p.Until}";
+            var sets = BuildSetsJson(p.Occupancy ?? new List<string>());
+            var encodedSets = Uri.EscapeDataString(sets);
+            var url = $"{path}?range={range}&sets={encodedSets}&los={p.Los}";
+            return url;
+        }
+
+        private string BuildSetsJson(List<string> occupancy)
+        {
+            var sets = new List<object>();
+            foreach (var occ in occupancy)
+            {
+                if (string.IsNullOrWhiteSpace(occ)) continue;
+                var tokens = occ.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                int adultCount = tokens.Count(t => string.Equals(t, "a", StringComparison.OrdinalIgnoreCase));
+                var children = new List<int>();
+                foreach (var t in tokens)
+                {
+                    if (int.TryParse(t, out var age)) children.Add(age);
+                }
+                var set = new
+                {
+                    uuid = Guid.NewGuid(),
+                    occupancy = new
+                    {
+                        adultCount = adultCount,
+                        children = children
+                    }
+                };
+                sets.Add(set);
+            }
+            return JsonConvert.SerializeObject(sets);
         }
 
     }
